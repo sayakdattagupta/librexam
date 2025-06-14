@@ -1,0 +1,46 @@
+@import './variables.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+:root
+{
+    --font-primary: 'Inter', sans-serif;
+}
+
+body
+{
+    font-family:var(--font-primary);
+    font-size:120%;
+    background-color:var(--color-bg);
+    color:var(--color-t);
+}
+
+ul 
+{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.spacer
+{
+    flex-grow:1;
+}
+.container
+{
+    padding: 20px;
+}
+
+.centerwrap
+{
+    display:flex;
+    gap:10px;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.title
+{
+    text-align:center;
+    font-weight:700;
+    color: var(--color-t);
+}

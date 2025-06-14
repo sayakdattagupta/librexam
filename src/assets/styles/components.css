@@ -1,0 +1,38 @@
+@import './variables.css';
+
+.btn
+{
+    display:inline-block;
+    margin:auto;
+    padding:1% 5%;
+    border:none;
+    background-color:var(--color-p);
+    color:var(--color-t);
+    cursor:pointer;
+    text-align:center;
+    text-decoration:none;
+}
+
+.btn:hover
+{
+    background-color:var(--color-s);
+}
+
+.button-hor
+{
+    display:flex;
+    align-items:center;
+    width:100%;
+}
+
+nav
+{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+nav .btn
+{
+    text-decoration:none;
+}
