@@ -1,38 +1,184 @@
 @import './variables.css';
 
+.title
+{
+ text-align:center;
+ color:var(--color-t);
+ border:solid var(--color-t);
+ padding:1rem;
+}
+
 .btn
 {
-    display:inline-block;
-    margin:auto;
-    padding:1% 5%;
-    border:none;
-    background-color:var(--color-p);
-    color:var(--color-t);
-    cursor:pointer;
-    text-align:center;
-    text-decoration:none;
+ display:inline-block;
+ margin:auto;
+ padding:1% 5%;
+ border:none;
+ background-color:var(--color-p);
+ color:var(--color-t);
+ cursor:pointer;
+ text-align:center;
+ text-decoration:none;
+}
+
+button
+{
+ display:inline-block;
+ margin:auto;
+ padding:1% 5%;
+ border:none;
+ background-color:var(--color-p);
+ color:var(--color-t);
+ cursor:pointer;
+ text-align:center;
+ text-decoration:none;
 }
 
 .btn:hover
 {
-    background-color:var(--color-s);
+ background-color:var(--color-s);
+}
+
+button:hover
+{
+ background-color:var(--color-s);
 }
 
 .button-hor
 {
-    display:flex;
-    align-items:center;
-    width:100%;
+ display:flex;
+ align-items:center;
+ width:100%;
 }
 
 nav
 {
-    display:flex;
-    justify-content:center;
-    gap:10px;
+ display:flex;
+ justify-content:center;
+ gap:10px;
 }
 
-nav .btn
+.bNav
 {
-    text-decoration:none;
+ text-decoration:none;
+ color:var(--color-t);
+}
+
+.bNav:hover
+{
+ color:var(--color-s);
+}
+
+.secBreak
+{
+ margin-top:2rem;
+ width:100%;
+ border-top:solid var(--color-t);
+}
+
+.testArea
+{
+ display:flex;
+ width:100%;
+}
+
+.qArea
+{
+ flex:7;
+ padding-right:1rem;
+}
+
+.drawerOpen
+{
+ display:none;
+}
+
+@media (max-width:900px)
+{
+ .testArea
+ {
+  align-items:center;
+  width:100%;
+ }
+ .qArea
+ {
+  flex:1;
+  padding:0;
+ }
+ .qNav
+ {
+  display:block;
+  width:50vw;
+  position:fixed;
+  right:0;
+  top:0;
+  z-index:999;
+  height:100%;
+  border:solid white;
+  background-color:var(--color-bg);
+ }
+
+ .drawerOpen
+ {
+  font-size:1rem;
+  display:block;
+  background-color:var(--color-s);
+  position:fixed;
+  top:50%;
+  right:0;
+ }
+ .qNav .drawerOpen
+ {
+  font-size:1em;
+  display:inline-block;
+  width:100%;
+  margin-bottom:1em;
+  position:static;
+  top:0;
+  left:0;
+ }
+}
+
+.qNav
+{
+ flex:3;
+}
+
+.bGrid
+{
+ display:grid;
+ padding:0.5rem;
+ box-sizing:border-box;
+ grid-template-columns:repeat(3,1fr);
+ gap:0.5rem;
+ width:100%;
+ align-items:stretch;
+}
+
+.bGrid button
+{
+ font-size:1rem;
+ padding:0.5rem;
+ display:block;
+ width:100%;
+ height:100%;
+}
+
+.CurrentQuestion
+{
+ background-color:var(--color-s);
+}
+
+.ViewedQuestion
+{
+ background-color:var(--color-alt);
+}
+
+.fFooter
+{
+ width:100%;
+ padding-bottom:2rem;
+ position:fixed;
+ bottom:0;
+ left:0;
 }

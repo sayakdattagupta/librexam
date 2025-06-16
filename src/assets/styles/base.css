@@ -3,44 +3,45 @@
 
 :root
 {
-    --font-primary: 'Inter', sans-serif;
+ --font-primary: 'Inter', sans-serif;
 }
 
 body
 {
-    font-family:var(--font-primary);
-    font-size:120%;
-    background-color:var(--color-bg);
-    color:var(--color-t);
+ font-family:var(--font-primary);
+ font-size:120%;
+ background-color:var(--color-bg);
+ color:var(--color-t);
 }
 
 ul 
 {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+ list-style: none;
+ padding: 0;
+ margin: 0;
 }
 
 .spacer
 {
-    flex-grow:1;
+ flex-grow:1;
 }
 .container
 {
-    padding: 20px;
+ padding: 2% 5%;
 }
 
 .centerwrap
 {
-    display:flex;
-    gap:10px;
-    flex-direction:column;
-    justify-content:center;
+ display:flex;
+ gap:10px;
+ flex-direction:column;
+ justify-content:center;
 }
 
-.title
+@media (max-width:900px)
 {
-    text-align:center;
-    font-weight:700;
-    color: var(--color-t);
+ .container
+ {
+  padding: 1% 2.5%;
+ }
 }

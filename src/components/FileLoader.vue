@@ -29,8 +29,6 @@ function handleFile(e)
       const json = JSON.parse(reader.result)
       testState.loadTest(json)
       const testId = testState.testId
-      const snapshot = testState.snapshotState()
-      testManager.addTestSnapshot(snapshot)
       router.push(`/test/${testId}/info`)
     }
     catch (err)
