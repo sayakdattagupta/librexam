@@ -38,6 +38,11 @@
        "type": "NUM",
        "text": "A body moves with uniform acceleration of 2 m/s² for 5 seconds. What is the final velocity if initial velocity was 3 m/s?",
        "answer": 13
+      },
+      {
+       "type": "NUM",
+       "text": "A body moves with uniform acceleration of 2 m/s² for 5 seconds. What is the final velocity if initial velocity was 3 m/s?",
+       "answer": 13
       }
      ]
     },

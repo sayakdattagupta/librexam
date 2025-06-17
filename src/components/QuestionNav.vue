@@ -1,6 +1,6 @@
 <template>
  <div class="bGrid">
-  <button v-for="(question,index) in section.questions" :key="index" :class="{'CurrentQuestion':index===qIdx, 'ViewedQuestion':testState.viewedQuestions[props.subIdx][props.secIdx][index]===true}" @click="changeQ(index)">
+  <button v-for="(question,index) in section.questions" :key="index" :class="{'CurrentQuestion':index===props.qIdx, 'ViewedQuestion':testState.viewedQuestions[props.subIdx][props.secIdx][index]===true}" @click="changeQ(index)">
    {{index+1}}
   </button>
  </div>

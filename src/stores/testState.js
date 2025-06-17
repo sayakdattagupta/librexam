@@ -94,7 +94,6 @@ export const useTestState = defineStore('testState', {
   answerQuestion(subIdx, secIdx, qIdx, response) {
    this._initNested(this.answers, subIdx, secIdx)
    this.answers[subIdx][secIdx][qIdx] = response
-   this.markViewed(subIdx, secIdx, qIdx)
   },
 
   markViewed(subIdx, secIdx, qIdx) {
@@ -145,6 +144,25 @@ export const useTestState = defineStore('testState', {
    const q = this.currentQuestionIndex
    this.logQuestionTime(s, sec, q, seconds)
   },
+
+
+initializeAnswers(testData) {
+  if (!this.answers) this.answers = {}
+
+  testData.subjects.forEach((subject, subIdx) => {
+    if (!this.answers[subIdx]) this.answers[subIdx] = {}
+
+    subject.sections.forEach((section, secIdx) => {
+      if (!this.answers[subIdx][secIdx]) this.answers[subIdx][secIdx] = {}
+
+      section.questions.forEach((_, qIdx) => {
+        if (!(qIdx in this.answers[subIdx][secIdx])) {
+          this.answers[subIdx][secIdx][qIdx] = null
+        }
+      })
+    })
+  })
+},
 
   _initNested(obj, subIdx, secIdx) {
    if (!obj[subIdx]) obj[subIdx] = {}

@@ -1,0 +1,12 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <title>Favicon-ready Li3</title>
+  <style>
+    .s0 { fill: none; stroke: white; stroke-miterlimit: 100; stroke-width: 4 } 
+    .s1 { fill: white } 
+  </style>
+  <g transform="translate(5,5) scale(0.9)">
+    <path id="Background" fill-rule="evenodd" class="s0" d="m100 0v100h-100v-100z"/>
+    <path id="Li" class="s1" aria-label="Li"  d="m26.6 87h30.6v-5.6h-24.3v-46.8h-6.3zm39.6 0h6.1v-39.2h-6.1zm3.1-45.9c2.4 0 4.3-1.8 4.3-4 0-2.3-1.9-4.1-4.3-4.1-2.4 0-4.3 1.8-4.3 4.1 0 2.2 1.9 4 4.3 4z"/>
+    <path id="3" class="s1" aria-label="3"  d="m15.1 28.3c3.8 0 6.6-2.4 6.6-5.6 0-2.5-1.5-4.3-3.9-4.7v-0.2c1.9-0.6 3.2-2.2 3.2-4.5 0-2.7-2.2-5.2-5.8-5.2-3.4 0-6.3 2.1-6.4 5.2h2.3c0.1-2 2-3.1 4-3.1 2.2 0 3.6 1.3 3.6 3.3 0 2-1.6 3.4-4 3.4h-1.5v2.1h1.5c3 0 4.7 1.5 4.7 3.7 0 2-1.8 3.5-4.4 3.5-2.2 0-4-1.2-4.2-3.1h-2.4c0.1 3.1 2.9 5.2 6.7 5.2z"/>
+  </g>
+</svg>
