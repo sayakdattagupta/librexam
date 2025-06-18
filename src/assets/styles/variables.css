@@ -1,10 +1,9 @@
-:root
-{
-    --color-bg:#0D1B2A;
-    --color-t: white;
-    --color-p: #415A77;
-    --color-s: #1B263B;
-    --color-alt: #141E30;
+:root {
+  --color-bg: #0d1b2a;
+  --color-t: white;
+  --color-p: #415a77;
+  --color-s: #1b263b;
+  --color-alt: #141e30;
 }
 
 /*https://coolors.co/palette/0d1b2a-1b263b-415a77-778da9-e0e1dd*/

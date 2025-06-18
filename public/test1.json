@@ -1,93 +1,78 @@
 {
- "title": "New Sample Test",
- "duration": 90,
- "author": "Sayak",
- "description": "A mock test covering core concepts of PCM",
- "subjects": [
-  {
-   "name": "Physics",
-   "sections": [
+  "title": "New Sample Test",
+  "duration": 90,
+  "author": "Sayak",
+  "description": "A mock test covering core concepts of PCM",
+  "subjects": [
     {
-     "name": "Kinematics",
-     "posM": 4,
-     "negM": 1,
-     "questions": [
-      {
-       "type": "SMCQ",
-       "text": "What is the standard acceleration due to gravity on Earth?",
-       "options": [
-        "9.8 m/s²",
-        "10 m/s²",
-        "9.6 m/s²",
-        "8.9 m/s²"
-       ],
-       "answer": 0
-      },
-      {
-       "type": "MMCQ",
-       "text": "Which of the following are scalar quantities?",
-       "options": [
-        "Speed",
-        "Velocity",
-        "Distance",
-        "Displacement"
-       ],
-       "answer": [0, 2]
-      },
-      {
-       "type": "NUM",
-       "text": "A body moves with uniform acceleration of 2 m/s² for 5 seconds. What is the final velocity if initial velocity was 3 m/s?",
-       "answer": 13
-      },
-      {
-       "type": "NUM",
-       "text": "A body moves with uniform acceleration of 2 m/s² for 5 seconds. What is the final velocity if initial velocity was 3 m/s?",
-       "answer": 13
-      }
-     ]
+      "name": "Physics",
+      "sections": [
+        {
+          "name": "Kinematics",
+          "posM": 4,
+          "negM": 1,
+          "questions": [
+            {
+              "type": "SMCQ",
+              "image": "https://i.ibb.co/DDtXhfp9/wall.png",
+              "text": "What is the standard acceleration due to gravity on Earth?",
+              "options": ["9.8 m/s²", "10 m/s²", "9.6 m/s²", "8.9 m/s²"],
+              "answer": 0
+            },
+            {
+              "type": "MMCQ",
+              "text": "Which of the following are scalar quantities?",
+              "options": ["Speed", "Velocity", "Distance", "Displacement"],
+              "answer": [0, 2]
+            },
+            {
+              "type": "NUM",
+              "text": "A body moves with uniform acceleration of 2 m/s² for 5 seconds. What is the final velocity if initial velocity was 3 m/s?",
+              "answer": 13
+            },
+            {
+              "type": "NUM",
+              "text": "A body moves with uniform acceleration of 2 m/s² for 5 seconds. What is the final velocity if initial velocity was 3 m/s?",
+              "answer": 13
+            }
+          ]
+        },
+        {
+          "name": "Thermodynamics",
+          "posM": 4,
+          "negM": 1,
+          "questions": [
+            {
+              "type": "SMCQ",
+              "text": "Which of the following is an intensive property?",
+              "options": ["Heat", "Volume", "Pressure", "Mass"]
+            }
+          ]
+        }
+      ]
     },
     {
-     "name": "Thermodynamics",
-     "posM": 4,
-     "negM": 1,
-     "questions": [
-      {
-       "type": "SMCQ",
-       "text": "Which of the following is an intensive property?",
-       "options": [
-        "Heat",
-        "Volume",
-        "Pressure",
-        "Mass"
-       ]
-      }
-     ]
+      "name": "Mathematics",
+      "sections": [
+        {
+          "name": "Calculus",
+          "posM": 4,
+          "negM": 1,
+          "questions": [
+            {
+              "type": "SMCQ",
+              "text": "Evaluate the definite integral:$$\\int_0^1 x^2 \\, dx$$ using the definition of the Riemann integral",
+              "options": [
+                "$\\frac{1}{2}$",
+                "$\\frac{1}{3}$",
+                "$\\frac{2}{3}$",
+                "1"
+              ],
+              "answer": 1
+            }
+          ]
+        }
+      ]
     }
-   ]
-  },
-  {
-   "name": "Mathematics",
-   "sections": [
-    {
-     "name": "Algebra",
-     "posM": 4,
-     "negM": 1,
-     "questions": [
-      {
-       "type": "SMCQ",
-       "text": "What is 2+2?",
-       "options": [
-        "4",
-        "2",
-        "1",
-        "3"
-       ],
-       "answer": 1
-      }
-     ]
-    }
-   ]
-  }
- ]
+  ]
 }
-
