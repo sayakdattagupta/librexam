@@ -3,9 +3,9 @@
     <h3>Question No. {{ props.qIdx + 1 }}</h3>
     <div class="spacer" />
     <h3>
-      <span style="color: red">+{{ section.posM }}</span
+      <span style="color: var(--color-r)">+{{ section.posM }}</span
       >&nbsp;&nbsp;
-      <span style="color: green">-{{ section.negM }}</span>
+      <span style="color: var(--color-g)">-{{ section.negM }}</span>
     </h3>
   </div>
 
@@ -30,7 +30,7 @@
         style="width: 100%; text-align: left; font-size: 1em"
         @click="question.type === 'SMCQ' ? answerQ(index) : answerMMCQ(index)"
         :class="{
-          ViewedQuestion:
+          CurrentQuestion:
             question.type === 'SMCQ'
               ? testState.answers[props.subIdx]?.[props.secIdx]?.[
                   props.qIdx
@@ -116,8 +116,6 @@ function answerMMCQ(index) {
   if (answerArray.length === 0) {
     testState.answers[props.subIdx][props.secIdx][props.qIdx] = null;
   }
-
-  console.log(testState.answers[props.subIdx][props.secIdx][props.qIdx]);
 }
 
 function submitInput() {

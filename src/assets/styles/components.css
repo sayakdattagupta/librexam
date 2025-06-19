@@ -70,7 +70,7 @@ button:hover {
 
 .dropdown {
   margin-top: 0.2rem;
-  border: solid white;
+  border: solid var(--color-focus);
   list-style: none;
   z-index: 100;
   min-width: max-content;
@@ -110,7 +110,7 @@ input {
 input:focus {
   outline: none;
   box-shadow: none;
-  border: solid white;
+  border: solid var(--color-focus);
 }
 
 nav {
@@ -141,6 +141,7 @@ nav {
 
 .qArea {
   flex: 7;
+  padding-bottom: 3rem;
   padding-right: 1rem;
 }
 
@@ -148,14 +149,26 @@ nav {
   display: none;
 }
 
+.chart {
+  width: 50%;
+  max-width: 800px;
+}
+
 @media (max-width: 900px) {
+  .chart {
+    width: 100%;
+    max-width: 400px;
+  }
   .testArea {
     align-items: center;
     width: 100%;
   }
   .qArea {
     flex: 1;
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 3rem;
   }
   .qNav {
     display: block;
@@ -211,11 +224,23 @@ nav {
 }
 
 .ViewedQuestion {
-  background-color: var(--color-alt);
+  background-color: var(--color-r);
 }
 
 .CurrentQuestion {
-  border: solid white;
+  border: solid var(--color-focus);
+}
+
+.MarkedQuestion {
+  background-color: var(--color-y);
+}
+
+.ViewedQuestion.AnsweredQuestion {
+  background-color: var(--color-g);
+}
+
+.ViewedQuestion.MarkedQuestion.AnsweredQuestion {
+  border: solid var(--color-y);
 }
 
 .fFooter {

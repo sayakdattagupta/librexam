@@ -7,6 +7,11 @@
         CurrentQuestion: index === props.qIdx,
         ViewedQuestion:
           testState.viewedQuestions[props.subIdx][props.secIdx][index] === true,
+        MarkedQuestion:
+          testState.markedForReview?.[props.subIdx]?.[props.secIdx]?.[index] ===
+          true,
+        AnsweredQuestion:
+          testState.answers[props.subIdx][props.secIdx][index] !== null,
       }"
       @click="changeQ(index)"
     >

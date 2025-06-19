@@ -1,9 +1,30 @@
 :root {
-  --color-bg: #0d1b2a;
-  --color-t: white;
-  --color-p: #415a77;
-  --color-s: #1b263b;
-  --color-alt: #141e30;
+  --color-bg: #fffdf9;
+  --color-t: #111111;
+
+  --color-p: #d6c5b2;
+  --color-s: #efe5d9;
+  --color-alt: #e8dbc7;
+
+  --color-r: #cb6d51;
+  --color-g: #7c8f6b;
+  --color-y: #c8a56a;
+
+  --color-muted: #b3a18c;
+  --color-accent: #a1624f;
+  --color-focus: #111111;
 }
 
-/*https://coolors.co/palette/0d1b2a-1b263b-415a77-778da9-e0e1dd*/
+.dark {
+  --color-bg: #0e0e0e;
+  --color-t: #eae5df;
+  --color-p: #1f2a30;
+  --color-s: #2c2f33;
+  --color-alt: #1a1d20;
+  --color-r: #a45c5c;
+  --color-g: #6a7a63;
+  --color-y: #b29a6d;
+  --color-muted: #44413b;
+  --color-accent: #a1624f;
+  --color-focus: #eae5df;
+}

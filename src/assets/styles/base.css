@@ -34,6 +34,18 @@ ul {
 
 @media (max-width: 900px) {
   .container {
-    padding: 1% 2.5%;
+    padding: 1% 2%;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
   }
 }

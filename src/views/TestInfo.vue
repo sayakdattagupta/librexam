@@ -3,7 +3,7 @@
     <h2>{{ testTitle }}</h2>
     <div class="secBreak" />
     <p>Author: {{ author }}</p>
-    <p>Duration: {{ duration }} minutes</p>
+    <p>Duration: {{ duration / 60 }} minutes</p>
     <p>Description: {{ description }}</p>
 
     <h3>Subjects</h3>

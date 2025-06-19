@@ -38,7 +38,8 @@
     <nav style="margin-top: 1rem; margin-bottom: 1rem">
       <RouterLink class="bNav" to="/">Home</RouterLink> |
       <RouterLink class="bNav" to="/make">Create</RouterLink> |
-      <RouterLink class="bNav" to="/">Stats</RouterLink>
+      <RouterLink class="bNav" to="/">Stats</RouterLink> |
+      <ThemeToggle class="bNav" />
     </nav>
     <FileLoader />
 
@@ -55,7 +56,13 @@
               Resume "{{ test.name }}" ({{ test.timestamp.split("T")[0] }})
             </button>
             <div class="spacer"></div>
-            <button class="btn" @click="deleteTest(test)">Delete Test</button>
+            <button
+              class="btn"
+              style="background-color: var(--color-r)"
+              @click="deleteTest(test)"
+            >
+              Delete Test
+            </button>
           </div>
         </li>
       </ul>
@@ -67,6 +74,7 @@
 import FileLoader from "../components/FileLoader.vue";
 import { useTestManager } from "../stores/testManager";
 import { useTestState } from "../stores/testState";
+import ThemeToggle from "../components/ThemeToggle.vue";
 import { RouterView, useRouter } from "vue-router";
 
 const testManager = useTestManager();

@@ -47,7 +47,11 @@
           </li>
         </ul>
       </div>
-      <h3>{{ timeLeft }}</h3>
+      <div style="display: flex; align-items: center; gap: 0.5rem">
+        <h3><ThemeToggle /></h3>
+        |
+        <h3>{{ formatted }}</h3>
+      </div>
     </header>
 
     <div class="testArea">
@@ -58,7 +62,9 @@
       </div>
 
       <div class="qNav" v-show="drawerVis || isWideScreen">
-        <button class="submit" v-show="!isWideScreen">SUBMIT</button>
+        <button @click="submitTest" class="submit" v-show="!isWideScreen">
+          SUBMIT
+        </button>
         <QuestionNav :subIdx="cSub" :secIdx="cSec" :qIdx="cQ" />
         <button
           class="drawerOpen"
@@ -72,9 +78,9 @@
       <div class="fFooter">
         <div class="button-hor">
           <button @click="clearQ">CLEAR</button>
-          <button>MARK FOR REVIEW</button>
+          <button @click="markReview">MARK FOR REVIEW</button>
           <button @click="nextQ">NEXT</button>
-          <button v-if="isWideScreen">SUBMIT</button>
+          <button @click="submitTest" v-if="isWideScreen">SUBMIT</button>
         </div>
       </div>
     </div>
@@ -84,10 +90,15 @@
 <script setup>
 import { computed, ref, watch, onMounted, onBeforeUnmount } from "vue";
 
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter, onBeforeRouteLeave } from "vue-router";
 import { useTestState } from "../stores/testState";
 import QuestionRenderer from "../components/QuestionRenderer.vue";
 import QuestionNav from "../components/QuestionNav.vue";
+import { useTimer } from "../stores/useTimer";
+import ThemeToggle from "../components/ThemeToggle.vue";
+
+const route = useRoute();
+const router = useRouter();
 
 const testState = useTestState();
 
@@ -110,9 +121,19 @@ const question = computed(
   () => section.value.questions[testState.currentQuestionIndex],
 );
 
+const timer = useTimer();
 const drawerVis = ref(false);
 const subDropdownVis = ref(false);
 const secDropdownVis = ref(false);
+
+onBeforeRouteLeave((to, from, next) => {
+  timer.stop();
+  if (to.path === "/") {
+    window.location.href = "/"; // or window.location.reload()
+  } else {
+    next();
+  }
+});
 
 watch(
   () => [
@@ -134,6 +155,20 @@ const handleResize = () => {
 
 onMounted(() => {
   window.addEventListener("resize", handleResize);
+
+  if (!timer.isRunning && !route.path.endsWith("/info")) {
+    timer.start();
+  }
+});
+
+const timeLeft = computed(() =>
+  Math.max(0, testState.duration - testState.timeElapsed),
+);
+
+const formatted = computed(() => {
+  const minutes = String(Math.floor(timeLeft.value / 60)).padStart(2, "0");
+  const seconds = String(timeLeft.value % 60).padStart(2, "0");
+  return `${minutes}:${seconds}`;
 });
 
 onBeforeUnmount(() => {
@@ -188,5 +223,11 @@ function clearQ() {
   ][testState.currentQuestionIndex] = null;
 }
 
-const timeLeft = "00:00";
+function markReview() {
+  testState.toggleMarkCurrentQuestion();
+}
+
+function submitTest() {
+  router.push(`/test/${testId.value}/result`);
+}
 </script>
