@@ -35,7 +35,7 @@ function handleFile(e) {
       const json = JSON.parse(reader.result);
       testState.loadTest(json);
       const testId = testState.testId;
-      router.push(`/test/${testId}/info`);
+      router.push(`/testInfo/${testId}`);
     } catch (err) {
       alert("Invalid test file.");
     }

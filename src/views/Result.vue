@@ -14,6 +14,7 @@
     <h3>Correct Questions: {{ correct }}</h3>
     <h3>Incorrect Questions: {{ incorrect }}</h3>
     <h3>Unattempted: {{ notAttempted }}</h3>
+    <RouterLink class="btn" to="/">Back to Home</RouterLink>
   </div>
 </template>
 <script setup>

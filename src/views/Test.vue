@@ -104,6 +104,7 @@ const testState = useTestState();
 
 const testId = computed(() => testState.testId);
 const testTitle = computed(() => testState.testTitle);
+const submitted = computed(() => testState.submitted);
 
 testState.initializeAnswers(testState.testData);
 
@@ -126,10 +127,21 @@ const drawerVis = ref(false);
 const subDropdownVis = ref(false);
 const secDropdownVis = ref(false);
 
+if (testState.submitted && testState.testId) {
+  router.replace(`/result/${testState.testId}`);
+}
+
+onMounted(() => {
+  window.addEventListener("resize", handleResize);
+  if (!timer.isRunning) {
+    timer.start();
+  }
+});
+
 onBeforeRouteLeave((to, from, next) => {
   timer.stop();
   if (to.path === "/") {
-    window.location.href = "/"; // or window.location.reload()
+    window.location.href = "/";
   } else {
     next();
   }
@@ -152,14 +164,6 @@ const isWideScreen = ref(window.innerWidth >= 900);
 const handleResize = () => {
   isWideScreen.value = window.innerWidth >= 900;
 };
-
-onMounted(() => {
-  window.addEventListener("resize", handleResize);
-
-  if (!timer.isRunning && !route.path.endsWith("/info")) {
-    timer.start();
-  }
-});
 
 const timeLeft = computed(() =>
   Math.max(0, testState.duration - testState.timeElapsed),
@@ -228,6 +232,8 @@ function markReview() {
 }
 
 function submitTest() {
-  router.push(`/test/${testId.value}/result`);
+  testState.submitted = true;
+  testState.syncToStorage();
+  router.push(`/result/${testId.value}`);
 }
 </script>

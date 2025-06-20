@@ -49,6 +49,7 @@
   </ul>
 
   <input
+    style="box-sizing: border-box; width: 100%"
     v-if="question.type === 'NUM'"
     autocomplete="off"
     type="number"

@@ -18,6 +18,7 @@ export const useTestState = defineStore("testState", {
     markedForReview: {},
     questionTimes: {},
     timeElapsed: 0,
+    submitted: false,
   }),
 
   actions: {
@@ -44,6 +45,7 @@ export const useTestState = defineStore("testState", {
       this.markedForReview = {};
       this.questionTimes = {};
       this.timeElapsed = 0;
+      this.submitted = false;
 
       await preloadAssets(testJson);
       this.syncToStorage();
@@ -66,6 +68,7 @@ export const useTestState = defineStore("testState", {
         markedForReview: this.markedForReview,
         questionTimes: this.questionTimes,
         timeElapsed: this.timeElapsed,
+        submitted: this.submitted,
       };
     },
 
@@ -91,6 +94,7 @@ export const useTestState = defineStore("testState", {
       this.markedForReview = snapshot.markedForReview || {};
       this.questionTimes = snapshot.questionTimes || {};
       this.timeElapsed = snapshot.timeElapsed || 0;
+      this.submitted = snapshot.submitted || false;
       this.syncToStorage();
     },
 
