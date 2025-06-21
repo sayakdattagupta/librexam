@@ -169,6 +169,12 @@ const timeLeft = computed(() =>
   Math.max(0, testState.duration - testState.timeElapsed),
 );
 
+watch(timeLeft, (newVal) => {
+  if (newVal === 0 && !testState.submitted) {
+    submitTest();
+  }
+});
+
 const formatted = computed(() => {
   const minutes = String(Math.floor(timeLeft.value / 60)).padStart(2, "0");
   const seconds = String(timeLeft.value % 60).padStart(2, "0");

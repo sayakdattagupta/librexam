@@ -62,13 +62,11 @@ export const useTestManager = defineStore("testManager", {
 
     importTests(jsonData) {
       try {
-        const parsed = JSON.parse(jsonData);
-        if (Array.isArray(parsed)) {
-          this.savedTests = parsed;
-          this.saveToStorage();
-        }
+        this.savedTests = jsonData;
+        this.saveToStorage();
+        alert("Data loaded successfully.");
       } catch (e) {
-        console.error("Invalid import data", e);
+        console.error("Invalid import data.", e);
       }
     },
   },

@@ -4,7 +4,6 @@ import LoadTest from "../views/LoadTest.vue";
 import Test from "../views/Test.vue";
 import TestInfo from "../views/TestInfo.vue";
 import Result from "../views/Result.vue";
-import TestMaker from "../views/TestMaker.vue";
 
 const routes = [
   { path: "/", component: Home },
@@ -12,7 +11,6 @@ const routes = [
   { path: "/test/:testId", component: Test },
   { path: "/testInfo/:testId", component: TestInfo },
   { path: "/result/:testId", component: Result },
-  { path: "/make", component: TestMaker },
 ];
 
 const router = createRouter({

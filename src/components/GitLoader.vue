@@ -22,7 +22,7 @@ const selectedFile = ref("");
 
 async function loadIndex() {
   try {
-    localStorage.setItem("indexURL", INDEX_URL.value); // persist
+    localStorage.setItem("indexURL", INDEX_URL.value);
     const res = await fetch(INDEX_URL.value + "?t=" + Date.now());
     jsonList.value = await res.json();
   } catch (err) {
@@ -31,9 +31,7 @@ async function loadIndex() {
   }
 }
 
-onMounted(() => {
-  loadIndex();
-});
+loadIndex();
 
 async function download(filename, url) {
   try {
@@ -77,7 +75,7 @@ function loadDownloaded(filename) {
           margin: 1rem auto;
           padding: 0.5em;
         "
-        placeholder="https://raw.githubusercontent.com/.../index.json"
+        placeholder="https://...test-repository.../index.json"
       />
     </label>
 

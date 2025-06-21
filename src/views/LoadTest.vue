@@ -1,15 +1,11 @@
 <template>
-  <div class="container">
-    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap">
-      <h2 @click="showLocal = false" :class="{ inactive: showLocal }">
-        Online
-      </h2>
-      <h2 @click="showLocal = true" :class="{ inactive: !showLocal }">Local</h2>
-    </div>
-
-    <GitLoader v-if="!showLocal" />
-    <FileLoader v-if="showLocal" />
+  <div style="display: flex; gap: 1.5rem; flex-wrap: wrap">
+    <h2 @click="showLocal = false" :class="{ inactive: showLocal }">Online</h2>
+    <h2 @click="showLocal = true" :class="{ inactive: !showLocal }">Local</h2>
   </div>
+
+  <GitLoader v-if="!showLocal" />
+  <FileLoader v-if="showLocal" />
 </template>
 
 <script setup>
