@@ -27,7 +27,7 @@
       :key="index"
     >
       <button
-        style="width: 100%; text-align: left; font-size: 1em;"
+        style="width: 100%; text-align: left; font-size: 1em"
         @click="question.type === 'SMCQ' ? answerQ(index) : answerMMCQ(index)"
         :class="{
           SelectedOption:

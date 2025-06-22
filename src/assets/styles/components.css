@@ -49,13 +49,12 @@ button {
 }
 
 .btn:hover {
-  filter:brightness(70%) !important;
+  filter: brightness(70%) !important;
 }
 
 button:hover {
-  filter:brightness(70%) !important;
+  filter: brightness(70%) !important;
 }
-
 
 .clickable {
   cursor: pointer;
@@ -184,7 +183,7 @@ nav {
   .drawerOpen {
     font-size: 1rem;
     display: block;
-    z-index:988;
+    z-index: 988;
     position: fixed;
     top: 50%;
     right: 0;
@@ -223,11 +222,10 @@ nav {
   height: 100%;
 }
 
-.SelectedOption
-{
- color:var(--color-bg) !important;
- background-color:var(--color-t) !important;
- border: var(--color-bg) !important;
+.SelectedOption {
+  color: var(--color-bg) !important;
+  background-color: var(--color-t) !important;
+  border: var(--color-bg) !important;
 }
 
 .ViewedQuestion {
@@ -235,8 +233,8 @@ nav {
 }
 
 .CurrentQuestion {
-  color:var(--color-bg) !important;
-  background-color:var(--color-t) !important;
+  color: var(--color-bg) !important;
+  background-color: var(--color-t) !important;
 }
 
 .MarkedQuestion {
