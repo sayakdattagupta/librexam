@@ -18,8 +18,7 @@ dist-ssr
 .env.*.local
 
 # Editor config
-.vscode/*
-!.vscode/extensions.json
+.vscode
 .idea
 .DS_Store
 *.suo
