@@ -7,14 +7,17 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Build and deps
 node_modules
 dist
 dist-ssr
 *.local
 
-dist
+# Environment files
+.env
+.env.*.local
 
-# Editor directories and files
+# Editor config
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -24,3 +27,11 @@ dist
 *.njsproj
 *.sln
 *.sw?
+
+# System files
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Hosting configs
+.vercel
