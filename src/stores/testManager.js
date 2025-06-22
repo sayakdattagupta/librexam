@@ -43,6 +43,7 @@ export const useTestManager = defineStore("testManager", {
     },
 
     clearAll() {
+      localStorage.clear();
       this.savedTests = [];
       this.saveToStorage();
     },

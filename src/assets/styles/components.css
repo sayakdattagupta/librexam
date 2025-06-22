@@ -28,8 +28,8 @@
   display: inline-block;
   margin: auto;
   padding: 1% 5%;
-  border: none;
-  background-color: var(--color-p);
+  border: solid var(--color-t);
+  background-color: var(--color-bg);
   color: var(--color-t);
   cursor: pointer;
   text-align: center;
@@ -40,8 +40,8 @@ button {
   display: inline-block;
   margin: auto;
   padding: 1% 5%;
-  border: none;
-  background-color: var(--color-p);
+  border: solid var(--color-t);
+  background-color: var(--color-bg);
   color: var(--color-t);
   cursor: pointer;
   text-align: center;
@@ -49,12 +49,13 @@ button {
 }
 
 .btn:hover {
-  background-color: var(--color-s);
+  filter:brightness(70%) !important;
 }
 
 button:hover {
-  background-color: var(--color-s);
+  filter:brightness(70%) !important;
 }
+
 
 .clickable {
   cursor: pointer;
@@ -101,16 +102,15 @@ input {
   font-size: 1.1rem;
   height: 3rem;
   padding-left: 1rem;
-  background-color: var(--color-p);
+  background-color: var(--color-bg);
   color: var(--color-t);
-  border: none;
+  border: solid var(--color-focus);
   margin: 0;
 }
 
 input:focus {
   outline: none;
   box-shadow: none;
-  border: solid var(--color-focus);
 }
 
 nav {
@@ -141,7 +141,7 @@ nav {
 
 .qArea {
   flex: 7;
-  padding-bottom: 3rem;
+  padding-bottom: 4rem;
   padding-right: 1rem;
 }
 
@@ -168,7 +168,7 @@ nav {
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
-    padding-bottom: 3rem;
+    padding-bottom: 4rem;
   }
   .qNav {
     display: block;
@@ -184,7 +184,7 @@ nav {
   .drawerOpen {
     font-size: 1rem;
     display: block;
-    background-color: var(--color-s);
+    z-index:988;
     position: fixed;
     top: 50%;
     right: 0;
@@ -223,16 +223,28 @@ nav {
   height: 100%;
 }
 
+.SelectedOption
+{
+ color:var(--color-bg) !important;
+ background-color:var(--color-t) !important;
+ border: var(--color-bg) !important;
+}
+
 .ViewedQuestion {
   background-color: var(--color-r);
 }
 
 .CurrentQuestion {
-  border: solid var(--color-focus);
+  color:var(--color-bg) !important;
+  background-color:var(--color-t) !important;
 }
 
 .MarkedQuestion {
   background-color: var(--color-y);
+}
+
+.CurrentQuestion.MarkedQuestion {
+  border: solid var(--color-y) !important;
 }
 
 .ViewedQuestion.AnsweredQuestion {
@@ -240,7 +252,7 @@ nav {
 }
 
 .ViewedQuestion.MarkedQuestion.AnsweredQuestion {
-  border: solid var(--color-y);
+  border: solid var(--color-y) !important;
 }
 
 .fFooter {

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <h2>{{ testTitle }}</h2>
     <div class="secBreak" />
     <p>Author: {{ author }}</p>

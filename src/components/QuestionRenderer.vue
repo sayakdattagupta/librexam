@@ -27,10 +27,10 @@
       :key="index"
     >
       <button
-        style="width: 100%; text-align: left; font-size: 1em"
+        style="width: 100%; text-align: left; font-size: 1em;"
         @click="question.type === 'SMCQ' ? answerQ(index) : answerMMCQ(index)"
         :class="{
-          CurrentQuestion:
+          SelectedOption:
             question.type === 'SMCQ'
               ? testState.answers[props.subIdx]?.[props.secIdx]?.[
                   props.qIdx
