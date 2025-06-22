@@ -12,7 +12,10 @@ All tests and quizzes are typed out in JSON, making distribution incredibly easy
 
 A collection of tests can be hosted in a repo, and can be indexed, with the index link being shared - effectively allowing decentralised hosting of tests.
 
-Even though images for questions currently need to be hosted (using a service like ImgBB, for example), then linked separately - A feature where each test JSON is bundled into a zip together with its own assets folder might be implemented - thus making the entire thing decentralised, if need be.
+Even though images for questions currently need to be hosted (using a service like ImgBB, for example), then linked separately - A feature where each test JSON is bundled into a zip together with its own assets folder might be implemented - thus practically making the entire thing decentralised.
+
+### Why Vercel?
+To boost early-adoption of the software while minimizing investment of resources from my behalf.
 
 ## Features 
 Test browsing (indexed repos),<br>
@@ -32,3 +35,6 @@ Code optimization, <br>
 A functioning WYSIWYG test maker *(maybe...)*, <br>
 Bundling tests into zips, along with their images *(maybe...)*,<br>
 Audio support
+
+## LICENSE
+[AGPLv3](LICENSE) - Free to use, modify, and share. However, Source code must be disclosed if deployed publicly.
