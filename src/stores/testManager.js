@@ -37,9 +37,13 @@ export const useTestManager = defineStore("testManager", {
     },
 
     deleteTest(id) {
-      this.ensureLoaded();
-      this.savedTests = this.savedTests.filter((t) => t.id !== id);
-      this.saveToStorage();
+      const raw = localStorage.getItem(STORAGE_KEY);
+      const existing = raw ? JSON.parse(raw) : [];
+
+      const updated = existing.filter((t) => t.id !== id);
+
+      this.savedTests = updated;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
     },
 
     clearAll() {

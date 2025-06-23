@@ -240,6 +240,7 @@ function markReview() {
 function submitTest() {
   testState.submitted = true;
   testState.syncToStorage();
+  localStorage.removeItem("currentTest");
   router.push(`/result/${testId.value}`);
 }
 </script>

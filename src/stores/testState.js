@@ -75,8 +75,11 @@ export const useTestState = defineStore("testState", {
     syncToStorage() {
       const snapshot = this.snapshotState();
       localStorage.setItem("currentTest", JSON.stringify(snapshot));
-      const manager = useTestManager();
-      manager.addTestSnapshot(snapshot);
+
+      if (!this.submitted || snapshot.submitted) {
+        const manager = useTestManager();
+        manager.addTestSnapshot(snapshot);
+      }
     },
 
     loadSnapshot(snapshot) {

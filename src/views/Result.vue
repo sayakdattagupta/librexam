@@ -14,7 +14,7 @@
     <h3>Correct Questions: {{ correct }}</h3>
     <h3>Incorrect Questions: {{ incorrect }}</h3>
     <h3>Unattempted: {{ notAttempted }}</h3>
-    <RouterLink class="btn" to="/">Back to Home</RouterLink>
+    <button @click="returnHome">Back to Home</button>
   </div>
 </template>
 <script setup>
@@ -26,6 +26,8 @@ const testState = useTestState();
 const testId = computed(() => testState.testId);
 const testTitle = computed(() => testState.testTitle);
 const testData = computed(() => testState.testData);
+
+const router = useRouter();
 
 var correct = 0;
 var incorrect = 0;
@@ -63,5 +65,9 @@ if (testData.value?.subjects) {
       });
     });
   });
+}
+
+function returnHome() {
+  router.push("/");
 }
 </script>

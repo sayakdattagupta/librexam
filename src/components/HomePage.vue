@@ -58,7 +58,7 @@
 import { useTestManager } from "../stores/testManager";
 import { useTestState } from "../stores/testState";
 import { RouterView, useRouter } from "vue-router";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 
 const testManager = useTestManager();
 const testState = useTestState();
