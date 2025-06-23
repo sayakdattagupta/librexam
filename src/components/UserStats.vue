@@ -8,9 +8,7 @@
       align-items: center;
     "
   >
-    <label class="btn" @click="testManager.exportTests"
-      >Export/Backup User Data</label
-    >
+    <label class="btn" @click="testManager.exportTests">Export User Data</label>
     <input
       style="display: none"
       type="file"

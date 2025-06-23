@@ -18,6 +18,10 @@ ul {
   margin: 0;
 }
 
+a {
+  color: var(--color-t);
+}
+
 .spacer {
   flex-grow: 1;
 }

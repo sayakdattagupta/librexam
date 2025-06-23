@@ -70,6 +70,8 @@ function start() {
 
 testManager.loadFromStorage();
 
+localStorage.removeItem("currentTest");
+
 const resumableTests = computed(() =>
   testManager.savedTests.filter((t) => !t.submitted),
 );

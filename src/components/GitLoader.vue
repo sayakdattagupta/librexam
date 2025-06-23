@@ -79,8 +79,8 @@ function loadDownloaded(filename) {
       />
     </label>
 
-    <button @click="loadIndex" style="margin-bottom: 1em">Refresh</button>
-    <h3>Available Tests:</h3>
+    <button @click="loadIndex" style="margin-bottom: 0.5em">Refresh</button>
+    <h2>Available Tests:</h2>
     <div style="overflow-y: auto">
       <ul>
         <li
@@ -90,16 +90,21 @@ function loadDownloaded(filename) {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1em;
+            margin-top: 0.5em;
             padding: 0.8rem;
             padding-right: 1.2rem;
-            background-color: var(--color-alt);
+            border: solid var(--color-t);
           "
         >
-          <h3 style="font-size: 0.8em">{{ entry.name }}</h3>
+          <h3 style="font-size: 0.9em">{{ entry.name }}</h3>
           <div style="display: flex; gap: 5px">
             <button
-              style="display: inline-block; background-color: var(--color-alt)"
+              style="
+                display: inline-block;
+                background-color: var(--color-g);
+                border: none;
+                padding: 0.5rem;
+              "
               @click="download(entry.filename, entry.url)"
             >
               Attempt
