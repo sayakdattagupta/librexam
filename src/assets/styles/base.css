@@ -1,5 +1,6 @@
 @import "./variables.css";
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
 
 :root {
   --font-primary: "Inter", sans-serif;
@@ -12,6 +13,20 @@ body {
   color: var(--color-t);
 }
 
+strong,
+b {
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -20,6 +35,10 @@ ul {
 
 a {
   color: var(--color-t);
+}
+
+code {
+  font-family: "Fira Code", "Courier New", monospace;
 }
 
 .spacer {

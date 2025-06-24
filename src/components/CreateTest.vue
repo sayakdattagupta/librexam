@@ -75,11 +75,18 @@
 
       <li>
         <strong>Adding Images:</strong> Host images on
-        <a href="https://imgbb.com" target="_blank">ImgBB</a> (or your prefered
-        platform; Or, just host it yourself). Use the "Direct Link" from the
-        Embed Codes tab, and include it in the <code>image</code> field of a
-        question:
-        <pre><code>"image": "https://i.ibb.co/example/image.png"</code></pre>
+        <a href="https://imgbb.com" target="_blank">ImgBB</a> (or any platform
+        of your choice; or, just use your own server). You must use a
+        <strong>direct image link</strong> — that is, the actual image URL that
+        opens only the image when you right-click and choose
+        <em>“Open image in new tab.”</em>
+        For example:
+        <pre><code>"image": "https://i.ibb.co/yourimage.png"</code></pre>
+        <p>
+          Avoid using preview pages or sharing links — those won’t work. The
+          link must end in an image extension like <code>.png</code>,
+          <code>.jpg</code>, or <code>.gif</code>.
+        </p>
       </li>
 
       <li>
@@ -92,16 +99,26 @@
       <li>
         <strong>Publishing Your Tests:</strong>
         <ol>
-          <li>Create a public GitHub repository (or anything else, really).</li>
-          <li>Add your test JSON files.</li>
           <li>
-            Add a root-level <code>index.json</code> like this:
+            Create a public GitHub repository (or any other hosting method).
+          </li>
+          <li>
+            Add your test JSON files to a folder (e.g. <code>tests/</code>).
+          </li>
+          <li>
+            Add a root-level <code>index.json</code> file like this:
             <pre><code>[
   {
-    "name": "Physics Full Test",
-    "author": "Your Name",
-    "description": "Mechanics and thermodynamics.",
-    "file": "https://raw.githubusercontent.com/your-username/your-repo/main/physics.json"
+    "name": "Sample Test",
+    "filename": "test1.json",
+    "author": "Sayak",
+    "description": "A sample Physics, Maths test",
+    "url": "https://raw.githubusercontent.com/librexam/testRepo/main/tests/test1.json"
+  },
+  {
+    "name": "Sample Test 2",
+    "filename": "test2.json",
+    "url": "https://raw.githubusercontent.com/librexam/testRepo/main/tests/test2.json"
   }
 ]</code></pre>
           </li>
@@ -113,10 +130,12 @@
       </li>
     </ol>
 
-    <p>Thats about it.</p>
+    <p>That's about it.</p>
   </div>
 </template>
+
 <script setup></script>
+
 <style scoped>
 pre {
   background-color: var(--color-alt);
