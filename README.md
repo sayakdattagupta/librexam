@@ -1,7 +1,11 @@
 ## [LibrExam](https://librexam.vercel.app)
 
 ![logo](./public/librexamTyped.svg)<br>
-is a powerful, fully static, and (optionally) decentralised test and quizzing engine - powered by Vue.js. The project is very much WIP and still alpha.
+is a powerful, fully static, and (optionally) decentralised test and quizzing engine - powered by Vue.js. 
+
+![screens](./screenshots/screen1.jpg)
+
+The project is very much WIP and still alpha.
 
 Also, check out the [repo](https://github.com/librexam/testRepo) where I am hosting the sample tests.
 
