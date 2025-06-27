@@ -1,9 +1,21 @@
-## [LibrExam](https://librexam.vercel.app)
-
 <div align="center">
     <img src="./public/librexamTyped.svg" alt="logo" />
 </div>
-<br>
+
+<p align="center">
+    <a href="https://librexam.vercel.app">
+      <img src="https://img.shields.io/badge/Vercel-Deployed-brightgreen?logo=vercel" />
+    </a>
+    <a href="https://github.com/sayakdattagupta/librexam/graphs/contributors">
+      <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/sayakdattagupta/librexam" />
+    </a>
+    <a href="https://github.com/sayakdattagupta/librexam/issues">
+      <img alt="Issues" src="https://img.shields.io/github/issues/sayakdattagupta/librexam?color=0088ff" />
+    </a>
+    <a href="https://github.com/sayakdattagupta/librexam/pulls">
+      <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/sayakdattagupta/librexam?color=0088ff" />
+    </a>
+</p>
 
 is a powerful, fully static, and (optionally) decentralised test and quizzing engine - powered by Vue.js.
 
@@ -11,11 +23,9 @@ is a powerful, fully static, and (optionally) decentralised test and quizzing en
 
 The project is very much WIP and still alpha.
 
-Also, check out the [repo](https://github.com/librexam/testRepo) where I am hosting the sample tests.
-
 ## Philosophy
 
-I realize this project might not exactly be 'libre', hence, to avoid any potential feuds, I have used a creative naming scheme (LibrE).
+Mock tests are an integral part of a students life. This app allows students to interact with community contributed tests.
 
 All tests and quizzes are typed out in JSON, making distribution incredibly easy.
 
@@ -29,24 +39,50 @@ To boost early-adoption of the software while minimizing investment of resources
 
 ## Features
 
-Test browsing (indexed repos),<br>
-Ability to manage multiple tests (paused or submitted),<br>
-Supports SMCQ, MMCQ and Numerical questions,<br>
-Supports marking questions for review, <br>
-Ability to load images for questions,<br>
-KaTeX support,<br>
-A dark theme/light theme toggle,<br>
-A rudimentary results page<br>
+- Test browsing (indexed repos)
+- Ability to manage multiple tests (paused or submitted)
+- Supports SMCQ, MMCQ and Numerical questions
+- Supports marking questions for review
+- Ability to load images for questions
+- KaTeX support
+- A dark theme/light theme toggle
+- A rudimentary results page
 
 ### To be done
 
-A more advanced results page, <br>
-Ability to track user stats, <br>
-A better UI (....), <br>
-Code optimization, <br>
-A functioning WYSIWYG test maker _(maybe...)_, <br>
-Bundling tests into zips, along with their images _(maybe...)_,<br>
-Audio support
+- A more advanced results page
+- Ability to track user stats
+- A better UI (....)
+- Code optimization
+- A functioning WYSIWYG test maker _(maybe...)_
+- Bundling tests into zips, along with their images _(maybe...)_
+- Audio support
+
+## Contribution
+
+### Prerequisites
+
+- Node.js
+- npm
+- git
+
+### Instructions
+
+1. Clone the ``main`` branch <br>
+   ``git clone https://github.com/sayakdattagupta/librexam.git``
+2. Install dependencies <br>
+   ``npm install``
+3. Run ``npm run dev``
+
+### Guidelines
+
+(Firstly, the obvious: Don't make any breaking changes.)
+
+This project uses the ``prettier`` code format. Make sure to run 
+
+``npx prettier --write .`` 
+
+from the root before making a pull request.
 
 ## LICENSE
 
