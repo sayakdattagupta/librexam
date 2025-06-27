@@ -1,6 +1,10 @@
 ## [LibrExam](https://librexam.vercel.app)
 
-![logo](./public/librexamTyped.svg)<br>
+<div align="center">
+    <img src="./public/librexamTyped.svg" alt="logo" />
+</div>
+<br>
+
 is a powerful, fully static, and (optionally) decentralised test and quizzing engine - powered by Vue.js. 
 
 ![screens](./screenshots/screen1.jpg)
