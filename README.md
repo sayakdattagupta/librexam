@@ -5,7 +5,7 @@
 </div>
 <br>
 
-is a powerful, fully static, and (optionally) decentralised test and quizzing engine - powered by Vue.js. 
+is a powerful, fully static, and (optionally) decentralised test and quizzing engine - powered by Vue.js.
 
 ![screens](./screenshots/screen1.jpg)
 

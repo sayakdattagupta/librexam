@@ -1,19 +1,40 @@
 <script setup>
-import { ref, onMounted } from "vue";
-
+import { ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useTestState } from "../stores/testState";
 import { useTestManager } from "../stores/testManager";
 
 const route = useRoute();
 const router = useRouter();
-
 const testState = useTestState();
 const testManager = useTestManager();
 
-const INDEX_URL = ref(
-  localStorage.getItem("indexURL") ||
-    "https://raw.githubusercontent.com/librexam/testRepo/main/index.json",
+const REPO_URL = ref(
+  localStorage.getItem("repoURL") || "https://github.com/librexam/testRepo",
+);
+
+const INDEX_URL = ref("");
+
+function githubToRawUrl(repoUrl, branch = "main") {
+  try {
+    const url = new URL(repoUrl);
+    if (!url.hostname.includes("github.com"))
+      throw new Error("Not a GitHub URL");
+    const [, user, repo] = url.pathname.split("/");
+    return `https://raw.githubusercontent.com/${user}/${repo}/${branch}/index.json`;
+  } catch (err) {
+    console.error("Invalid GitHub URL:", err);
+    return "";
+  }
+}
+
+watch(
+  REPO_URL,
+  (newUrl) => {
+    INDEX_URL.value = githubToRawUrl(newUrl);
+    localStorage.setItem("repoURL", newUrl);
+  },
+  { immediate: true },
 );
 
 const jsonList = ref([]);
@@ -21,9 +42,13 @@ const loadedData = ref(null);
 const selectedFile = ref("");
 
 async function loadIndex() {
+  if (!INDEX_URL.value) {
+    alert("Invalid index URL.");
+    return;
+  }
   try {
-    localStorage.setItem("indexURL", INDEX_URL.value);
-    const res = await fetch(INDEX_URL.value + "?t=" + Date.now());
+    const res = await fetch(`${INDEX_URL.value}?t=${Date.now()}`);
+    if (!res.ok) throw new Error("Network response was not ok");
     jsonList.value = await res.json();
   } catch (err) {
     console.error("Failed to load index.json:", err);
@@ -36,11 +61,12 @@ loadIndex();
 async function download(filename, url) {
   try {
     const res = await fetch(url);
+    if (!res.ok) throw new Error("Network response was not ok");
     const data = await res.json();
     localStorage.setItem(`json-${filename}`, JSON.stringify(data));
     loadDownloaded(filename);
   } catch (err) {
-    console.error(`Failed to fetch ${url}`, err);
+    console.error(`Failed to fetch ${url}:`, err);
     alert(`Download failed for ${filename}`);
   }
 }
@@ -56,26 +82,29 @@ function loadDownloaded(filename) {
     const json = JSON.parse(raw);
     testState.loadTest(json);
     const testId = testState.testId;
-    router.push(`/testInfo/${testId}`);
+    if (testId) {
+      router.push(`/testInfo/${testId}`);
+    } else {
+      alert("Test ID not found.");
+    }
   } catch (err) {
+    console.error("Error parsing stored test file:", err);
     alert("Stored test file is invalid.");
-    console.error(err);
   }
 }
 </script>
-
 <template>
   <div style="width: 100%; margin: auto">
     <label>
       <input
-        v-model="INDEX_URL"
+        v-model="REPO_URL"
         style="
           width: 100%;
           box-sizing: border-box;
           margin: 1rem auto;
           padding: 0.5em;
         "
-        placeholder="https://...test-repository.../index.json"
+        placeholder="https://github.com/username/test-repository"
       />
     </label>
 

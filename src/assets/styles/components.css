@@ -9,7 +9,7 @@
 .logo {
   width: 100%;
   height: auto;
-  max-width: 400px;
+  max-width: 500px;
   display: block;
   margin: 0 auto;
 }
@@ -154,6 +154,9 @@ nav {
 }
 
 @media (max-width: 900px) {
+  .logo {
+    max-width: 400px;
+  }
   .chart {
     width: 100%;
     max-width: 400px;

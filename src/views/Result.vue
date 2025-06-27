@@ -19,7 +19,7 @@
 </template>
 <script setup>
 import { computed, ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter, onBeforeRouteLeave } from "vue-router";
 import { useTestState } from "../stores/testState";
 
 const testState = useTestState();
@@ -28,6 +28,16 @@ const testTitle = computed(() => testState.testTitle);
 const testData = computed(() => testState.testData);
 
 const router = useRouter();
+var allowLeave = false;
+
+onBeforeRouteLeave((to, from, next) => {
+  if (!allowLeave) {
+    alert("Please use the 'Back to Home' button to leave.");
+    next(false);
+  } else {
+    next();
+  }
+});
 
 var correct = 0;
 var incorrect = 0;
@@ -68,6 +78,7 @@ if (testData.value?.subjects) {
 }
 
 function returnHome() {
+  allowLeave = true;
   router.push("/");
 }
 </script>
