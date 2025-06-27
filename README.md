@@ -21,6 +21,8 @@ is a powerful, fully static, and (optionally) decentralised test and quizzing en
 
 ![screens](./screenshots/screen1.jpg)
 
+![screens](./screenshots/screen2.jpg)
+
 The project is very much WIP and still alpha.
 
 ## Philosophy
