@@ -21,8 +21,6 @@ is a powerful, fully static, and (optionally) decentralised test and quizzing en
 
 ![screens](./screenshots/screen1.jpg)
 
-![screens](./screenshots/screen2.jpg)
-
 The project is very much WIP and still alpha.
 
 ## Philosophy
@@ -32,6 +30,8 @@ Mock tests are an integral part of a students life. This app allows students to 
 All tests and quizzes are typed out in JSON, making distribution incredibly easy.
 
 A collection of tests can be hosted in a repo, and can be indexed, with the index link being shared - effectively allowing decentralised hosting of tests.
+
+![screens](./screenshots/screen2.jpg)
 
 Even though images for questions currently need to be hosted (using a service like ImgBB, for example), then linked separately - A feature where each test JSON is bundled into a zip together with its own assets folder might be implemented - thus practically making the entire thing decentralised.
 
