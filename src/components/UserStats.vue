@@ -20,7 +20,7 @@
     <label
       class="btn"
       style="background-color: var(--color-r)"
-      @click="testManager.clearAll"
+      @click="handleClear"
       >Clear User Data</label
     >
   </div>
@@ -43,5 +43,16 @@ function handleFile(e) {
     }
   };
   reader.readAsText(file);
+}
+
+function clearAndReload() {
+  testManager.clearAll();
+  window.location.reload();
+}
+
+function handleClear() {
+  if (typeof window !== "undefined" && window.confirm("Are you sure?")) {
+    clearAndReload();
+  }
 }
 </script>

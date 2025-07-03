@@ -153,6 +153,11 @@ nav {
   max-width: 800px;
 }
 
+.resRenderer {
+  width: 70%;
+  margin: auto;
+}
+
 @media (max-width: 900px) {
   .logo {
     max-width: 400px;
@@ -182,7 +187,9 @@ nav {
     height: 100%;
     background-color: var(--color-bg);
   }
-
+  .resRenderer {
+    width: 100%;
+  }
   .drawerOpen {
     font-size: 1rem;
     display: block;
@@ -231,7 +238,7 @@ nav {
 }
 
 .CorrectOption {
-  border: solid var(--color-g);
+  border: solid 6px var(--color-g);
 }
 
 .SelectedOption.CorrectOption {

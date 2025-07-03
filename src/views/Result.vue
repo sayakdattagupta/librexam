@@ -15,7 +15,7 @@
     <h2>
       Time Taken: {{ Math.floor(timeTaken / 60) }} min {{ timeTaken % 60 }} sec
     </h2>
-    <div class="secBreak" />
+
     <h2 style="text-align: center">Overall Stats</h2>
 
     <div class="p-6" style="max-width: 400px; margin: auto">
@@ -25,7 +25,7 @@
     </div>
     <div class="secBreak" />
     <h2 style="text-align: center">Question Wise Data</h2>
-    <div>
+    <div class="resRenderer">
       <div
         style="
           display: flex;
@@ -82,6 +82,7 @@
         :readonly="true"
         :showCorrect="true"
       />
+      <br />
       <div class="button-hor">
         <button @click="prevQ">PREV</button>
         <button @click="nextQ">NEXT</button>
@@ -252,7 +253,7 @@ const chartOptions = {
       position: "top",
     },
     title: {
-      display: true,
+      display: false,
       text: "Overall Stats",
     },
   },
