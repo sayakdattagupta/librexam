@@ -228,7 +228,23 @@ nav {
 .SelectedOption {
   color: var(--color-bg) !important;
   background-color: var(--color-t) !important;
-  border: var(--color-bg) !important;
+  border: solid var(--color-bg);
+}
+
+.CorrectOption {
+  border: solid var(--color-g);
+}
+
+.SelectedOption.CorrectOption {
+  color: var(--color-t) !important;
+  background-color: var(--color-g) !important;
+  border: solid var(--color-t);
+}
+
+.IncorrectOption {
+  color: var(--color-t) !important;
+  background-color: var(--color-r) !important;
+  border: solid var(--color-t) !important;
 }
 
 .ViewedQuestion {

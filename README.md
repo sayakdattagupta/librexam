@@ -70,19 +70,19 @@ To boost early-adoption of the software while minimizing investment of resources
 
 ### Instructions
 
-1. Clone the ``main`` branch <br>
-   ``git clone https://github.com/sayakdattagupta/librexam.git``
+1. Clone the `main` branch <br>
+   `git clone https://github.com/sayakdattagupta/librexam.git`
 2. Install dependencies <br>
-   ``npm install``
-3. Run ``npm run dev``
+   `npm install`
+3. Run `npm run dev`
 
 ### Guidelines
 
 (Firstly, the obvious: Don't make any breaking changes.)
 
-This project uses the ``prettier`` code format. Make sure to run 
+This project uses the `prettier` code format. Make sure to run
 
-``npx prettier --write .`` 
+`npx prettier --write .`
 
 from the root before making a pull request.
 

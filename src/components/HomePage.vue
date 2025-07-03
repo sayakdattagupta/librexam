@@ -86,6 +86,7 @@ function resume(snapshot) {
 }
 
 function viewRes(snapshot) {
+  testState.loadSnapshot(snapshot);
   router.push(`/result/${snapshot.id}`);
 }
 
