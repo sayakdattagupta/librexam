@@ -228,7 +228,6 @@ nav {
 .SelectedOption {
   color: var(--color-bg) !important;
   background-color: var(--color-t) !important;
-  border: solid var(--color-bg);
 }
 
 .CorrectOption {
