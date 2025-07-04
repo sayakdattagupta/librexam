@@ -23,8 +23,11 @@
             {
               "type": "SMCQ",
               "text": "What is the acceleration due to gravity on Earth?",
+              "image": "", //solution image
               "options": ["9.8 m/s²", "10 m/s²", "9.6 m/s²", "8.9 m/s²"],
               "answer": 0
+              "solution": "The acceleration due to gravity is 9.8",
+              "simage": "" //solution image
             },
             {
               "type": "MMCQ",
@@ -57,6 +60,11 @@
           <li>
             Each section has questions of type <code>SMCQ</code>,
             <code>MMCQ</code>, or <code>NUM</code>.
+          </li>
+          <li>
+            Each question has a <code>solution</code> and a
+            <code>simage</code> field. Both are optional to fill in. If both
+            don't exist, it will show up as "No Solution Provided."
           </li>
         </ul>
       </li>

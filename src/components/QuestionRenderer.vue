@@ -71,7 +71,7 @@
       />
     </div>
     <p v-if="question.solution"><latexText :text="question.solution" /></p>
-    <p v-else>No Solution Provided.</p>
+    <p v-if="!question.solution && !question.simage">No Solution Provided.</p>
   </div>
 </template>
 
