@@ -17,7 +17,9 @@
               "image": "https://i.ibb.co/svfYP7mR/6661f97fda605edec06c8c93-AD-4n-Xf-Qz-Rb-VA21a-Vj-Byl-I7-I3-LKDHU1-WDGm-Si8y-Uxihs-PPVe7om-P1-N39f-Kz.png",
               "text": "What is the standard acceleration due to gravity on Earth? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras et interdum enim, nec posuere orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus odio vel nunc auctor blandit. Morbi eget dui in ex mattis scelerisque a nec orci. Nam quis neque a leo hendrerit lacinia. Nulla vel pharetra orci, nec gravida nisl. In venenatis felis dui, at porta tellus molestie vel. Cras in risus et lectus pulvinar sollicitudin sollicitudin vel erat. Suspendisse mollis ultrices lorem id laoreet. Praesent vel velit in sapien lacinia fermentum accumsan ut felis. Phasellus non posuere enim. Nunc sed volutpat est. Nunc id gravida urna. Fusce semper interdum rutrum. Vestibulum id nisl ac nunc elementum rhoncus. Cras vel massa dapibus, consequat neque ac, consequat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nunc nunc, faucibus ac sapien in, hendrerit dignissim sapien. Sed venenatis metus id odio iaculis, eu auctor ante lobortis. Cras interdum ac nulla sit amet suscipit. Aenean dapibus massa sed ante pharetra vehicula. Cras condimentum velit vel magna porta malesuada. Nam vestibulum quis risus sed luctus. In rutrum bibendum orci nec rhoncus.",
               "options": ["9.8 m/s²", "10 m/s²", "9.6 m/s²", "8.9 m/s²"],
-              "answer": 0
+              "answer": 0,
+              "solution": "Very obvious.",
+              "simage": "https://i.ibb.co/svfYP7mR/6661f97fda605edec06c8c93-AD-4n-Xf-Qz-Rb-VA21a-Vj-Byl-I7-I3-LKDHU1-WDGm-Si8y-Uxihs-PPVe7om-P1-N39f-Kz.png"
             },
             {
               "type": "MMCQ",

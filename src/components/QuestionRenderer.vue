@@ -3,9 +3,9 @@
     <h3>Question No. {{ props.qIdx + 1 }}</h3>
     <div class="spacer" />
     <h3>
-      <span style="color: var(--color-r)">+{{ section.posM }}</span>
+      <span style="color: var(--color-g)">+{{ section.posM }}</span>
       &nbsp;&nbsp;
-      <span style="color: var(--color-g)">-{{ section.negM }}</span>
+      <span style="color: var(--color-r)">-{{ section.negM }}</span>
     </h3>
   </div>
 
@@ -58,6 +58,20 @@
         Correct Answer: {{ correctAnswer }}
       </span>
     </div>
+  </div>
+
+  <div v-if="props.showCorrect">
+    <h3>Solution:</h3>
+    <div style="text-align: center">
+      <img
+        v-if="question.simage"
+        :src="question.simage"
+        alt="solutionimg"
+        style="max-width: 100%; max-height: 600px; margin: 1em 0"
+      />
+    </div>
+    <p v-if="question.solution"><latexText :text="question.solution" /></p>
+    <p v-else>No Solution Provided.</p>
   </div>
 </template>
 
