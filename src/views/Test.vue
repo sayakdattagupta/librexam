@@ -238,6 +238,9 @@ function markReview() {
 }
 
 function submitTest() {
+  testState.currentQuestionIndex = 0;
+  testState.currentSectionIndex = 0;
+  testState.currentSubjectIndx = 0;
   testState.submitted = true;
   testState.syncToStorage();
   router.push(`/result/${testId.value}`);
