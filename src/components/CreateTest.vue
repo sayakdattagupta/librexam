@@ -131,8 +131,7 @@
 ]</code></pre>
           </li>
           <li>
-            Then paste your repo URL into LibrExam’s “Load from Repository”
-            input. It will fetch and index your tests automatically.
+            Then in your repo options, add the topic <code>librexam-test</code>. It will index your tests automatically/within 5-10 minutes of upload.
           </li>
         </ol>
       </li>
