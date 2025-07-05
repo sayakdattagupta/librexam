@@ -1,62 +1,57 @@
 <script setup>
-import { ref, watch } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
 import { useTestState } from "../stores/testState";
-import { useTestManager } from "../stores/testManager";
 
-const route = useRoute();
+const CENTRAL_INDEX_URL =
+  "https://raw.githubusercontent.com/sayakdattagupta/librexamtests/main/indexedRepos.json";
+
 const router = useRouter();
 const testState = useTestState();
-const testManager = useTestManager();
 
-const REPO_URL = ref(
-  localStorage.getItem("repoURL") || "https://github.com/librexam/testRepo",
-);
-
-const INDEX_URL = ref("");
-
-function githubToRawUrl(repoUrl, branch = "main") {
-  try {
-    const url = new URL(repoUrl);
-    if (!url.hostname.includes("github.com"))
-      throw new Error("Not a GitHub URL");
-    const [, user, repo] = url.pathname.split("/");
-    return `https://raw.githubusercontent.com/${user}/${repo}/${branch}/index.json`;
-  } catch (err) {
-    console.error("Invalid GitHub URL:", err);
-    return "";
-  }
-}
-
-watch(
-  REPO_URL,
-  (newUrl) => {
-    INDEX_URL.value = githubToRawUrl(newUrl);
-    localStorage.setItem("repoURL", newUrl);
-  },
-  { immediate: true },
-);
-
+const loadedRepos = ref([]);
 const jsonList = ref([]);
-const loadedData = ref(null);
-const selectedFile = ref("");
 
-async function loadIndex() {
-  if (!INDEX_URL.value) {
-    alert("Invalid index URL.");
-    return;
-  }
+async function fetchCentralRepoIndex() {
   try {
-    const res = await fetch(`${INDEX_URL.value}?t=${Date.now()}`);
-    if (!res.ok) throw new Error("Network response was not ok");
-    jsonList.value = await res.json();
+    const res = await fetch(`${CENTRAL_INDEX_URL}?t=${Date.now()}`);
+    if (!res.ok) throw new Error("Failed to load central index");
+    const data = await res.json();
+    loadedRepos.value = data.repositories || [];
   } catch (err) {
-    console.error("Failed to load index.json:", err);
-    alert("Could not fetch index.json. Check URL.");
+    console.error("Error loading indexedRepos.json:", err);
+    alert("Could not fetch central test repository list.");
   }
 }
 
-loadIndex();
+async function fetchAllIndexes() {
+  jsonList.value = [];
+
+  const promises = loadedRepos.value.map(async (repo) => {
+    const rawUrl = `https://raw.githubusercontent.com/${repo.full_name}/main/index.json`;
+    try {
+      const res = await fetch(`${rawUrl}?t=${Date.now()}`);
+      if (!res.ok) throw new Error("Failed to load index.json");
+
+      const tests = await res.json();
+      for (const test of tests) {
+        jsonList.value.push({
+          ...test,
+          repo: repo.full_name,
+        });
+      }
+    } catch (err) {
+      console.warn(`Failed to load index for ${repo.full_name}:`, err);
+    }
+  });
+
+  await Promise.all(promises);
+}
+
+async function initializeRepoBrowser() {
+  await fetchCentralRepoIndex();
+  await fetchAllIndexes();
+}
 
 async function download(filename, url) {
   try {
@@ -92,55 +87,62 @@ function loadDownloaded(filename) {
     alert("Stored test file is invalid.");
   }
 }
-</script>
-<template>
-  <div style="width: 100%; margin: auto">
-    <label>
-      <input
-        v-model="REPO_URL"
-        style="
-          width: 100%;
-          box-sizing: border-box;
-          margin: 1rem auto;
-          padding: 0.5em;
-        "
-        placeholder="https://github.com/username/test-repository"
-      />
-    </label>
 
-    <button @click="loadIndex" style="margin-bottom: 0.5em">Refresh</button>
-    <h2>Available Tests:</h2>
-    <div style="overflow-y: auto">
-      <ul>
-        <li
-          v-for="entry in jsonList"
-          :key="entry.filename"
-          style="
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 0.5em;
-            padding: 0.8rem;
-            padding-right: 1.2rem;
-            border: solid var(--color-t);
-          "
-        >
-          <h3 style="font-size: 0.9em">{{ entry.name }}</h3>
-          <div style="display: flex; gap: 5px">
-            <button
-              style="
-                display: inline-block;
-                background-color: var(--color-g);
-                border: none;
-                padding: 0.5rem;
-              "
-              @click="download(entry.filename, entry.url)"
-            >
-              Attempt
-            </button>
-          </div>
-        </li>
-      </ul>
+onMounted(() => {
+  initializeRepoBrowser();
+});
+</script>
+
+<template>
+  <div style="width: 100%">
+    <h2 style="margin-bottom: 1em">Available Tests from All Repositories:</h2>
+
+    <div v-if="jsonList.length === 0">
+      <p>Loading test index...</p>
     </div>
+
+    <ul v-else>
+      <li
+        v-for="entry in jsonList"
+        :key="entry.filename + entry.repo"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-top: 0.5em;
+          padding: 0.8rem;
+          padding-top: 0;
+          padding-right: 1.2rem;
+          border: solid var(--color-t);
+          flex-direction: column;
+        "
+      >
+        <div>
+          <h2
+            class="tName"
+            style="font-size: 1.2em"
+            @click="download(entry.filename, entry.url)"
+          >
+            <u>{{ entry.name }}</u> by {{ entry.author }}
+          </h2>
+          <p style="font-size: 1em; margin-bottom: 0.3rem">
+            {{ entry.description }}
+          </p>
+          <a
+            style="font-size: 0.9em; color: var(--color-t)"
+            :href="`https://github.com/${entry.repo}`"
+            target="_blank"
+          >
+            Source: {{ entry.repo }}
+          </a>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
+
+<style>
+.tName:hover {
+  cursor: pointer;
+}
+</style>
