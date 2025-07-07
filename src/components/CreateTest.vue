@@ -120,18 +120,23 @@
     "name": "Sample Test",
     "filename": "test1.json",
     "author": "Sayak",
+    "duration": 3600,
+    "tags": ["physics","mathematics"],
     "description": "A sample Physics, Maths test",
     "url": "https://raw.githubusercontent.com/librexam/testRepo/main/tests/test1.json"
   },
   {
     "name": "Sample Test 2",
     "filename": "test2.json",
+     ......
     "url": "https://raw.githubusercontent.com/librexam/testRepo/main/tests/test2.json"
   }
 ]</code></pre>
           </li>
           <li>
-            Then in your repo options, add the topic <code>librexam-test</code>. It will index your tests automatically/within 5-10 minutes of upload.
+            Then in your repo options, add the topic <code>librexam-test</code>.
+            It will index your tests automatically/within 5-10 minutes of
+            upload.
           </li>
         </ol>
       </li>

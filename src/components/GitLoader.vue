@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { useTestState } from "../stores/testState";
 
@@ -11,6 +11,18 @@ const testState = useTestState();
 
 const loadedRepos = ref([]);
 const jsonList = ref([]);
+
+const searchQuery = ref("");
+const sortOption = ref("updated");
+const activeTags = ref([]);
+
+const allTags = computed(() => {
+  const tags = new Set();
+  jsonList.value.forEach((entry) => {
+    entry.tags?.forEach((t) => tags.add(t));
+  });
+  return Array.from(tags);
+});
 
 async function fetchCentralRepoIndex() {
   try {
@@ -38,6 +50,8 @@ async function fetchAllIndexes() {
         jsonList.value.push({
           ...test,
           repo: repo.full_name,
+          updated_at: repo.updated_at,
+          stargazers_count: repo.stargazers_count,
         });
       }
     } catch (err) {
@@ -88,22 +102,100 @@ function loadDownloaded(filename) {
   }
 }
 
+function toggleTag(tag) {
+  if (activeTags.value.includes(tag)) {
+    activeTags.value = activeTags.value.filter((t) => t !== tag);
+  } else {
+    activeTags.value.push(tag);
+  }
+}
+
+const filteredList = computed(() => {
+  let list = jsonList.value;
+
+  const query = searchQuery.value.toLowerCase();
+  if (query) {
+    list = list.filter(
+      (entry) =>
+        (entry.name && entry.name.toLowerCase().includes(query)) ||
+        (entry.description &&
+          entry.description.toLowerCase().includes(query)) ||
+        (entry.author && entry.author.toLowerCase().includes(query)) ||
+        (entry.tags && entry.tags.some((t) => t.toLowerCase().includes(query))),
+    );
+  }
+
+  if (activeTags.value.length > 0) {
+    list = list.filter(
+      (entry) =>
+        entry.tags && entry.tags.some((tag) => activeTags.value.includes(tag)),
+    );
+  }
+
+  if (sortOption.value === "updated") {
+    list = [...list].sort(
+      (a, b) => new Date(b.updated_at) - new Date(a.updated_at),
+    );
+  } else if (sortOption.value === "stars") {
+    list = [...list].sort((a, b) => b.stargazers_count - a.stargazers_count);
+  }
+
+  return list;
+});
+
+function formatDuration(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins} minute${mins !== 1 ? "s" : ""}${secs ? `, ${secs} second${secs !== 1 ? "s" : ""}` : ""}`;
+}
+
 onMounted(() => {
   initializeRepoBrowser();
 });
 </script>
-
 <template>
   <div style="width: 100%">
-    <h2 style="margin-bottom: 1em">Available Tests from All Repositories:</h2>
+    <div style="margin-bottom: 1em">
+      <input
+        v-model="searchQuery"
+        placeholder="Search..."
+        style="box-sizing: border-box; margin-bottom: 1em"
+      />
+      <select v-model="sortOption" class="btn" style="padding: 1em">
+        <option value="updated">Sort by Last Updated</option>
+        <option value="stars">Sort by Stars</option>
+      </select>
+    </div>
 
-    <div v-if="jsonList.length === 0">
-      <p>Loading test index...</p>
+    <div style="margin-bottom: 1em">
+      <span
+        v-for="tag in allTags"
+        :key="tag"
+        @click="toggleTag(tag)"
+        :style="{
+          cursor: 'pointer',
+          backgroundColor: activeTags.includes(tag)
+            ? 'var(--color-t)'
+            : 'var(--color-bg)',
+          color: activeTags.includes(tag)
+            ? 'var(--color-bg)'
+            : 'var(--color-t)',
+          marginRight: '0.5em',
+          padding: '0.5rem',
+          fontSize: '0.8em',
+        }"
+      >
+        #{{ tag }}
+      </span>
+    </div>
+
+    <div v-if="filteredList.length === 0">
+      <p>No matching tests found.</p>
     </div>
 
     <ul v-else>
       <li
-        v-for="entry in jsonList"
+        v-for="entry in filteredList"
         :key="entry.filename + entry.repo"
         style="
           display: flex;
@@ -128,19 +220,42 @@ onMounted(() => {
           <p style="font-size: 1em; margin-bottom: 0.3rem">
             {{ entry.description }}
           </p>
-          <a
-            style="font-size: 0.9em; color: var(--color-t)"
-            :href="`https://github.com/${entry.repo}`"
-            target="_blank"
+
+          <p
+            v-if="entry.duration"
+            style="font-size: 0.9em; margin-bottom: 0.3em"
           >
-            Source: {{ entry.repo }}
-          </a>
+            Duration: {{ formatDuration(entry.duration) }}
+          </p>
+          <p
+            v-if="entry.tags && entry.tags.length"
+            style="font-size: 0.9em; margin-bottom: 0.3rem"
+          >
+            <span
+              v-for="(tag, i) in entry.tags"
+              :key="i"
+              style="margin-right: 0.5em"
+            >
+              #{{ tag }}
+            </span>
+          </p>
+          <div style="display: flex; gap: 0.5em">
+            <a
+              style="font-size: 0.9em; color: var(--color-t)"
+              :href="`https://github.com/${entry.repo}`"
+              target="_blank"
+            >
+              Source: {{ entry.repo }}
+            </a>
+            <span style="font-size: 0.9em"
+              >(Stars ⭐: {{ entry.stargazers_count }})</span
+            >
+          </div>
         </div>
       </li>
     </ul>
   </div>
 </template>
-
 <style>
 .tName:hover {
   cursor: pointer;
