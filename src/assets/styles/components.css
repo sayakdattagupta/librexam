@@ -34,6 +34,7 @@
   cursor: pointer;
   text-align: center;
   text-decoration: none;
+  transition: filter 0.05s ease;
 }
 
 button {
@@ -45,6 +46,7 @@ button {
   color: var(--color-t);
   cursor: pointer;
   text-align: center;
+  transition: filter 0.05s ease;
   text-decoration: none;
 }
 
