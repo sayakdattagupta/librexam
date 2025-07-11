@@ -49,11 +49,11 @@ button {
 }
 
 .btn:hover {
-  filter: brightness(70%) !important;
+  filter: invert(1) !important;
 }
 
 button:hover {
-  filter: brightness(70%) !important;
+  filter: invert(1) !important;
 }
 
 .clickable {
