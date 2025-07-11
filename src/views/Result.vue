@@ -12,6 +12,7 @@
       <h2>{{ testTitle }}</h2>
     </header>
 
+    <h1 style="text-align: center">Score: {{ score }}</h1>
     <h2>
       Time Taken: {{ Math.floor(timeTaken / 60) }} min {{ timeTaken % 60 }} sec
     </h2>
@@ -137,32 +138,63 @@ const cQ = computed(() => testState.currentQuestionIndex);
 var correct = 0;
 var incorrect = 0;
 var notAttempted = 0;
+var score = 0;
 
 if (testData.value?.subjects) {
   testData.value.subjects.forEach((subject, i1) => {
     subject.sections.forEach((section, i2) => {
       section.questions.forEach((question, i3) => {
         const userAnswer = testState.answers?.[i1]?.[i2]?.[i3];
+        const correctAnswer = question.answer;
+        const posM = section.posM;
+        const negM = section.negM;
 
-        if (userAnswer === null || userAnswer === undefined) {
-          notAttempted += 1;
-        } else if (
-          Array.isArray(question.answer) &&
-          Array.isArray(userAnswer)
+        if (
+          userAnswer === null ||
+          userAnswer === undefined ||
+          (Array.isArray(userAnswer) && userAnswer.length === 0)
         ) {
-          let c = 0;
+          notAttempted += 1;
+          return;
+        }
 
-          question.answer.forEach((ans, i4) => {
-            if (userAnswer.includes(ans)) {
-              c += 1;
+        if (Array.isArray(correctAnswer) && Array.isArray(userAnswer)) {
+          const correctSet = new Set(correctAnswer);
+          const userSet = new Set(userAnswer);
+
+          let allCorrectSelected = true;
+          let hasWrongOption = false;
+          let correctCount = 0;
+
+          userSet.forEach((ans) => {
+            if (correctSet.has(ans)) {
+              correctCount += 1;
+            } else {
+              hasWrongOption = true;
             }
           });
 
-          if (question.answer.length === c) correct += 1;
-        } else if (question.answer === userAnswer) {
-          correct += 1;
+          if (
+            correctCount === correctSet.size &&
+            userSet.size === correctSet.size
+          ) {
+            correct += 1;
+            score += posM;
+          } else if (hasWrongOption) {
+            incorrect += 1;
+            score -= negM;
+          } else {
+            correct += 1;
+            score += correctCount;
+          }
         } else {
-          incorrect += 1;
+          if (userAnswer === correctAnswer) {
+            correct += 1;
+            score += posM;
+          } else {
+            incorrect += 1;
+            score -= negM;
+          }
         }
       });
     });
