@@ -21,15 +21,15 @@ is a powerful, fully static, and (optionally) decentralised test and quizzing en
 
 ![screens](./screenshots/screen1.jpg)
 
-The project is very much WIP and still alpha.
+**NOTE: LibrExam is alpha software and is considered unstable. While users testing and providing usage information is highly appreciated, please use at your own risk.**
 
 ## Philosophy
 
-Mock tests are an integral part of a students life. This app allows students to interact with community contributed tests.
+This app allows users to interact with community contributed tests.
 
 All tests and quizzes are typed out in JSON, making distribution incredibly easy.
 
-A collection of tests can be hosted in a repo, and can be indexed, with the index link being shared - effectively allowing decentralised hosting of tests.
+A collection of tests can be hosted in a repo and indexed - this repo, once tagged/given the topic of "librexam-test", gets automatically indexed into a central list of repos - effectively allowing decentralised hosting of tests. Aditionally, JSON files for individual tests can be loaded manually.
 
 ![screens](./screenshots/screen2.jpg)
 
@@ -41,24 +41,24 @@ To boost early-adoption of the software while minimizing investment of resources
 
 ## Features
 
-- Test browsing (indexed repos)
+- Test browsing (indexed repos) - all repos tagged with 'librexam-test' are indexed automatically.
 - Ability to manage multiple tests (paused or submitted)
-- Supports SMCQ, MMCQ and Numerical questions
-- Supports marking questions for review
-- Ability to load images for questions
-- KaTeX support
-- A dark theme/light theme toggle
-- A rudimentary results page
+- Supports SMCQ, MMCQ and Numerical questions.
+- Supports marking questions for review.
+- Ability to load images for questions and/or their solutions.
+- KaTeX/Math support.
+- A dark theme/light theme toggle.
+- A rudimentary results page.
 
 ### To be done
 
-- A more advanced results page
-- Ability to track user stats
-- A better UI (....)
-- Code optimization
+- A more advanced results/stats page.
+- Ability to track user stats across multiple tests.
+- Ironing out bugs and optimizing code.
 - A functioning WYSIWYG test maker _(maybe...)_
 - Bundling tests into zips, along with their images _(maybe...)_
-- Audio support
+- Audio support.
+- Expansions into "quizzing" territory - user-hosted gameroooms like Kahoot! _(maybe...)_
 
 ## Contribution
 

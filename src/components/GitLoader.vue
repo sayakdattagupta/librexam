@@ -25,14 +25,34 @@ const allTags = computed(() => {
 });
 
 async function fetchCentralRepoIndex() {
+  const cacheKey = "cached-indexedRepos";
   try {
     const res = await fetch(`${CENTRAL_INDEX_URL}?t=${Date.now()}`);
     if (!res.ok) throw new Error("Failed to load central index");
+
     const data = await res.json();
-    loadedRepos.value = data.repositories || [];
+    if (!data.repositories || data.repositories.length === 0) {
+      throw new Error("Received empty central index");
+    }
+
+    loadedRepos.value = data.repositories;
+    localStorage.setItem(cacheKey, JSON.stringify(data));
   } catch (err) {
     console.error("Error loading indexedRepos.json:", err);
-    alert("Could not fetch central test repository list.");
+
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      try {
+        const data = JSON.parse(cached);
+        loadedRepos.value = data.repositories || [];
+        alert("Using cached central index due to error or empty result.");
+      } catch (parseErr) {
+        console.error("Error parsing cached central index:", parseErr);
+        alert("Could not load central test repository list.");
+      }
+    } else {
+      alert("Could not fetch central test repository list.");
+    }
   }
 }
 
@@ -41,21 +61,44 @@ async function fetchAllIndexes() {
 
   const promises = loadedRepos.value.map(async (repo) => {
     const rawUrl = `https://raw.githubusercontent.com/${repo.full_name}/main/index.json`;
+    const cacheKey = `cached-index-${repo.full_name}`;
+    let tests = [];
+
     try {
       const res = await fetch(`${rawUrl}?t=${Date.now()}`);
       if (!res.ok) throw new Error("Failed to load index.json");
 
-      const tests = await res.json();
-      for (const test of tests) {
-        jsonList.value.push({
-          ...test,
-          repo: repo.full_name,
-          updated_at: repo.updated_at,
-          stargazers_count: repo.stargazers_count,
-        });
+      const fetchedTests = await res.json();
+
+      if (Array.isArray(fetchedTests) && fetchedTests.length > 0) {
+        tests = fetchedTests;
+        localStorage.setItem(cacheKey, JSON.stringify(fetchedTests)); // ✅ Save cache
+      } else {
+        throw new Error("Fetched index is empty, using cache");
       }
     } catch (err) {
-      console.warn(`Failed to load index for ${repo.full_name}:`, err);
+      console.warn(`Error loading index for ${repo.full_name}:`, err);
+
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        try {
+          tests = JSON.parse(cached);
+        } catch (parseErr) {
+          console.error(
+            `Error parsing cached index for ${repo.full_name}:`,
+            parseErr,
+          );
+        }
+      }
+    }
+
+    for (const test of tests) {
+      jsonList.value.push({
+        ...test,
+        repo: repo.full_name,
+        updated_at: repo.updated_at,
+        stargazers_count: repo.stargazers_count,
+      });
     }
   });
 
