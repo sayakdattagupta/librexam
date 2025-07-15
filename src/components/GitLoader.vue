@@ -217,9 +217,10 @@ onMounted(() => {
         @click="toggleTag(tag)"
         :style="{
           cursor: 'pointer',
+          borderRadius: '5px',
           backgroundColor: activeTags.includes(tag)
             ? 'var(--color-t)'
-            : 'var(--color-bg)',
+            : 'var(--color-alt)',
           color: activeTags.includes(tag)
             ? 'var(--color-bg)'
             : 'var(--color-t)',
@@ -244,29 +245,31 @@ onMounted(() => {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          margin-top: 0.5em;
+          margin-top: 1em;
           padding: 0.8rem;
           padding-top: 0;
           padding-right: 1.2rem;
-          border: solid var(--color-t);
+          border: none;
+          border-radius: 5px;
+          background-color: var(--color-alt);
           flex-direction: column;
         "
       >
         <div>
           <h2
             class="tName"
-            style="font-size: 1.2em"
+            style="font-size: 1em"
             @click="download(entry.filename, entry.url)"
           >
-            <u>{{ entry.name }}</u> by {{ entry.author }}
+            <b>{{ entry.name }}</b> by {{ entry.author }}
           </h2>
-          <p style="font-size: 1em; margin-bottom: 0.3rem">
+          <p style="font-size: 0.9em; margin-bottom: 0.3rem">
             {{ entry.description }}
           </p>
 
           <p
             v-if="entry.duration"
-            style="font-size: 0.9em; margin-bottom: 0.3em"
+            style="font-size: 0.8em; margin-bottom: 0.3em"
           >
             Duration: {{ formatDuration(entry.duration) }}
           </p>

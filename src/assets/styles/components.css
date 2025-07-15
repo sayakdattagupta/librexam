@@ -27,26 +27,28 @@
 .btn {
   display: inline-block;
   margin: auto;
-  padding: 1% 5%;
-  border: solid var(--color-t);
-  background-color: var(--color-bg);
+  padding: 1.25% 3%;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-alt);
   color: var(--color-t);
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  transition: filter 0.05s ease;
+  transition: filter 0.1s ease;
 }
 
 button {
   display: inline-block;
   margin: auto;
-  padding: 1% 5%;
-  border: solid var(--color-t);
-  background-color: var(--color-bg);
+  padding: 1.25% 3%;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-alt);
   color: var(--color-t);
   cursor: pointer;
   text-align: center;
-  transition: filter 0.05s ease;
+  transition: filter 0.1s ease;
   text-decoration: none;
 }
 
@@ -72,14 +74,16 @@ button:hover {
 
 .dropdown {
   margin-top: 0.2rem;
-  border: solid var(--color-focus);
+  border: solid var(--color-alt);
+  background-color: var(--color-alt);
+  border-radius: 5px;
   list-style: none;
   z-index: 100;
   min-width: max-content;
 }
 
 .dropdown li {
-  padding: 0.2rem;
+  padding: 0.3rem;
 }
 
 .button-hor {
@@ -103,9 +107,10 @@ input {
   font-size: 1.1rem;
   height: 3rem;
   padding-left: 1rem;
-  background-color: var(--color-bg);
+  background-color: var(--color-alt);
   color: var(--color-t);
-  border: solid var(--color-focus);
+  border: none;
+  border-radius: 5px;
   margin: 0;
 }
 
@@ -130,9 +135,8 @@ nav {
 }
 
 .secBreak {
-  margin-top: 2rem;
+  margin-top: 3rem;
   width: 100%;
-  border-top: solid var(--color-t);
 }
 
 .testArea {
@@ -234,13 +238,17 @@ nav {
   height: 100%;
 }
 
-.SelectedOption {
+/* .SelectedOption {
   color: var(--color-bg) !important;
   background-color: var(--color-t) !important;
+} */
+
+.SelectedOption {
+  border: solid var(--color-t) 2px;
 }
 
 .CorrectOption {
-  border: solid 6px var(--color-g);
+  border: solid 3px var(--color-g);
 }
 
 .SelectedOption.CorrectOption {

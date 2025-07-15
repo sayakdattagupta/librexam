@@ -9,7 +9,7 @@
     <h3>Paused Tests</h3>
     <ul>
       <li
-        style="padding-bottom: 5px"
+        style="padding-bottom: 1em"
         v-for="test in resumableTests"
         :key="test.id"
       >
@@ -33,7 +33,7 @@
     <h3>Submitted Tests</h3>
     <ul>
       <li
-        style="padding-bottom: 5px"
+        style="padding-bottom: 1em"
         v-for="test in submittedTests"
         :key="test.id"
       >

@@ -9,7 +9,7 @@
     </h3>
   </div>
 
-  <p><latexText :text="question.text" /></p>
+  <p style="font-size: 1.1em"><latexText :text="question.text" /></p>
 
   <div style="text-align: center">
     <img
@@ -24,14 +24,30 @@
     <li
       v-for="(option, index) in question.options"
       :key="index"
-      style="padding-bottom: 5px"
+      style="padding-bottom: 0.5em"
     >
       <button
         style="width: 100%; text-align: left; font-size: 1em"
         @click="handleClick(index)"
         :class="getOptionClass(index)"
       >
-        <div><latexText :text="option" /></div>
+        <div style="display: flex; gap: 1em; align-items: center">
+          <div
+            style="
+              background-color: var(--color-s);
+              display: flex;
+              color: var(--color-alt);
+              border-radius: 50%;
+              min-width: 1.3em;
+              min-height: 1.3em;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            {{ String.fromCharCode(65 + index) }}
+          </div>
+          <latexText :text="option" />
+        </div>
       </button>
     </li>
   </ul>
