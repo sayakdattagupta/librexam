@@ -233,7 +233,7 @@ onMounted(() => {
       </span>
     </div>
 
-    <div v-if="filteredList.length === 0">
+    <div v-if="filteredList.length === 0" style="margin-top: 2em">
       <p>No matching tests found.</p>
     </div>
 

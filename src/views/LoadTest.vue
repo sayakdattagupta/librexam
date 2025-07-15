@@ -1,7 +1,7 @@
 <template>
   <div style="display: flex; gap: 1.5rem; flex-wrap: wrap">
-    <h2 @click="showLocal = false" :class="{ inactive: showLocal }">Online</h2>
-    <h2 @click="showLocal = true" :class="{ inactive: !showLocal }">Local</h2>
+    <h1 @click="showLocal = false" :class="{ inactive: showLocal }">Online</h1>
+    <h1 @click="showLocal = true" :class="{ inactive: !showLocal }">Local</h1>
   </div>
 
   <GitLoader v-if="!showLocal" />
@@ -19,9 +19,10 @@ const showLocal = ref(false);
 <style scoped>
 .inactive {
   text-decoration: none;
+  filter: opacity(50%);
 }
-h2 {
-  text-decoration: underline;
+h1 {
+  filter: opacity(100%);
   cursor: pointer;
 }
 </style>

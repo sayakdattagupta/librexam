@@ -34,7 +34,7 @@
         <div style="display: flex; gap: 1em; align-items: center">
           <div
             style="
-              background-color: var(--color-s);
+              filter: brightness(2);
               display: flex;
               color: var(--color-alt);
               border-radius: 50%;
@@ -89,6 +89,7 @@
     <p v-if="question.solution"><latexText :text="question.solution" /></p>
     <p v-if="!question.solution && !question.simage">No Solution Provided.</p>
   </div>
+  <div class="secBreak" />
 </template>
 
 <script setup>

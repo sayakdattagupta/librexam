@@ -150,10 +150,10 @@
 
 <style scoped>
 pre {
-  background-color: var(--color-alt);
+  background-color: var(--color-s);
   padding: 1rem;
   overflow-x: auto;
-  color: var(--color-r);
+  color: var(--color-t);
   font-size: 0.9em;
 }
 ul {

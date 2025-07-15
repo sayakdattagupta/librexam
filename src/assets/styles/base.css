@@ -1,5 +1,5 @@
 @import "./variables.css";
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
 
 :root {
@@ -11,11 +11,12 @@ body {
   font-size: 125%;
   background-color: var(--color-bg);
   color: var(--color-t);
+  font-weight: 500;
 }
 
 strong,
 b {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 h1,
@@ -24,7 +25,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
+  font-weight: 500;
 }
 
 ul {

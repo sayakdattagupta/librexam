@@ -8,11 +8,11 @@
         justify-content: space-between;
       "
     >
-      <h2>Result</h2>
-      <h2>{{ testTitle }}</h2>
+      <h1>Result</h1>
+      <h1>{{ testTitle }}</h1>
     </header>
 
-    <h1 style="text-align: center">Score: {{ score }}</h1>
+    <h1>Score: {{ score }}</h1>
     <h2>
       Time Taken: {{ Math.floor(timeTaken / 60) }} min {{ timeTaken % 60 }} sec
     </h2>
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="secBreak" />
-    <h2 style="text-align: center">Question Wise Data</h2>
+    <h2 style="text-align: center">Questions</h2>
     <div class="resRenderer">
       <div
         style="

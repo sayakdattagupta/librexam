@@ -1,64 +1,84 @@
 <template>
-  <RouterLink
-    class="btn"
-    style="display: block; text-align: center; margin: 0 auto; width: 20%"
-    to="/loadTest"
-    >Start</RouterLink
-  >
-  <div class="saved-tests secBreak" v-if="resumableTests.length">
-    <h3>Paused Tests</h3>
-    <ul>
-      <li
-        style="padding-bottom: 1em"
-        v-for="test in resumableTests"
-        :key="test.id"
-      >
-        <div class="button-hor">
-          <button class="btn" @click="resume(test)">
-            {{ test.name }} ({{ test.timestamp.split("T")[0] }})
-          </button>
-          <div class="spacer"></div>
-          <button
-            class="btn"
-            style="background-color: var(--color-r)"
-            @click="deleteTest(test)"
+  <div class="container" style="padding-top: 0">
+    <h1 class="titleH">
+      Welcome to a
+      <b>powerful, client-side, open-source, and decentralized</b> test and
+      quizzing engine. Join a vibrant community of students and a growing
+      collection of user-contributed exams.
+    </h1>
+    <RouterLink
+      class="btn"
+      style="
+        display: block;
+        text-align: center;
+        margin-left: 0;
+        margin-top: 2em;
+        width: 20%;
+      "
+      to="/loadTest"
+      >Browse Tests</RouterLink
+    >
+    <h3 @click="scrollToSection" class="hoverBut" style="margin-top: 2em">
+      Or, see already attempted tests.
+    </h3>
+    <section ref="targetSec" style="margin-top: 25em">
+      <div class="saved-tests secBreak" v-if="resumableTests.length">
+        <h2>Paused Tests</h2>
+        <ul>
+          <li
+            style="padding-bottom: 1em"
+            v-for="test in resumableTests"
+            :key="test.id"
           >
-            X
-          </button>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="saved-tests secBreak" v-if="submittedTests.length">
-    <h3>Submitted Tests</h3>
-    <ul>
-      <li
-        style="padding-bottom: 1em"
-        v-for="test in submittedTests"
-        :key="test.id"
-      >
-        <div class="button-hor">
-          <button class="btn" @click="viewRes(test)">
-            {{ test.name }} ({{ test.timestamp.split("T")[0] }})
-          </button>
-          <div class="spacer"></div>
-          <button
-            class="btn"
-            style="background-color: var(--color-r)"
-            @click="deleteTest(test)"
+            <div class="button-hor">
+              <button class="btn" @click="resume(test)">
+                {{ test.name }} ({{ test.timestamp.split("T")[0] }})
+              </button>
+              <div class="spacer"></div>
+              <button
+                class="btn"
+                style="background-color: var(--color-r)"
+                @click="deleteTest(test)"
+              >
+                X
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="saved-tests secBreak" v-if="submittedTests.length">
+        <h2>Submitted Tests</h2>
+        <ul>
+          <li
+            style="padding-bottom: 1em"
+            v-for="test in submittedTests"
+            :key="test.id"
           >
-            X
-          </button>
-        </div>
-      </li>
-    </ul>
+            <div class="button-hor">
+              <button class="btn" @click="viewRes(test)">
+                {{ test.name }} ({{ test.timestamp.split("T")[0] }})
+              </button>
+              <div class="spacer"></div>
+              <button
+                class="btn"
+                style="background-color: var(--color-r)"
+                @click="deleteTest(test)"
+              >
+                X
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
   </div>
+  <p style="text-align: center; margin-top: 4em">Powered by Vue.js</p>
 </template>
 <script setup>
 import { useTestManager } from "../stores/testManager";
 import { useTestState } from "../stores/testState";
 import { RouterView, useRouter } from "vue-router";
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 
 const testManager = useTestManager();
 const testState = useTestState();
@@ -66,6 +86,12 @@ const router = useRouter();
 
 function start() {
   router.push("/loadTest");
+}
+
+const targetSec = ref(null);
+
+function scrollToSection() {
+  targetSec.value?.scrollIntoView({ behavior: "smooth" });
 }
 
 testManager.loadFromStorage();
@@ -94,3 +120,13 @@ function deleteTest(test) {
   testManager.deleteTest(test.id);
 }
 </script>
+<style>
+.hoverBut:hover {
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+</style>

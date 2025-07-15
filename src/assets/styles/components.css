@@ -27,7 +27,7 @@
 .btn {
   display: inline-block;
   margin: auto;
-  padding: 1.25% 3%;
+  padding: 1.5% 3%;
   border: none;
   border-radius: 5px;
   background-color: var(--color-alt);
@@ -41,7 +41,7 @@
 button {
   display: inline-block;
   margin: auto;
-  padding: 1.25% 3%;
+  padding: 1.5% 3%;
   border: none;
   border-radius: 5px;
   background-color: var(--color-alt);
@@ -65,11 +65,11 @@ button:hover {
 }
 
 .clickable:hover {
-  text-decoration: underline;
+  filter: opacity(0.5);
 }
 
 .clickable.active {
-  text-decoration: underline;
+  filter: opacity(0.5);
 }
 
 .dropdown {
@@ -128,10 +128,11 @@ nav {
 .bNav {
   text-decoration: none;
   color: var(--color-t);
+  filter: opacity(1);
 }
 
 .bNav:hover {
-  text-decoration: underline;
+  filter: opacity(0.5);
 }
 
 .secBreak {
@@ -165,6 +166,18 @@ nav {
 }
 
 @media (max-width: 900px) {
+  .btn:hover {
+    filter: none !important;
+  }
+  button:hover {
+    filter: none !important;
+  }
+  .btn {
+    padding: 3% 3%;
+  }
+  button {
+    padding: 3% 3%;
+  }
   .logo {
     max-width: 400px;
   }
