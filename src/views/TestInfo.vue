@@ -1,12 +1,21 @@
 <template>
   <div>
-    <h2>{{ testTitle }}</h2>
-    <div class="secBreak" />
-    <p>Author: {{ author }}</p>
+    <div style="display: flex; gap: 1em">
+      <h1
+        @click="backOff"
+        style="font-size: 2rem; user-select: none"
+        class="backLink"
+      >
+        <b>&lt;</b>
+      </h1>
+      <h1 style="font-size: 2rem">
+        <b>{{ testTitle }}</b> by {{ author }}
+      </h1>
+    </div>
     <p>Duration: {{ duration / 60 }} minutes</p>
     <p>Description: {{ description }}</p>
 
-    <h3>Subjects</h3>
+    <h2><b>Subjects</b></h2>
     <ul>
       <li
         style="margin-bottom: 0.3rem"
@@ -45,4 +54,14 @@ function startTest() {
   testManager.addTestSnapshot(snapshot);
   router.push(`/test/${testId.value}`);
 }
+
+function backOff() {
+  testManager.deleteTest(testId.value);
+  router.push("/loadTest/");
+}
 </script>
+<style>
+.backLink:hover {
+  cursor: pointer;
+}
+</style>

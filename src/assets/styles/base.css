@@ -12,6 +12,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-t);
   font-weight: 500;
+  line-height: 1.2;
 }
 
 strong,
@@ -26,6 +27,18 @@ h4,
 h5,
 h6 {
   font-weight: 500;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.6rem;
 }
 
 ul {

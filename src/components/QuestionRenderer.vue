@@ -1,6 +1,8 @@
 <template>
   <div class="button-hor" style="padding: 0; margin-top: 0">
-    <h3>Question No. {{ props.qIdx + 1 }}</h3>
+    <h3>
+      <b>Question No. {{ props.qIdx + 1 }}</b>
+    </h3>
     <div class="spacer" />
     <h3>
       <span style="color: var(--color-g)">+{{ section.posM }}</span>
@@ -77,7 +79,7 @@
   </div>
 
   <div v-if="props.showCorrect">
-    <h3>Solution:</h3>
+    <h3><b>Solution:</b></h3>
     <div style="text-align: center">
       <img
         v-if="question.simage"

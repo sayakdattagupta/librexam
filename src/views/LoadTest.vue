@@ -1,5 +1,8 @@
 <template>
   <div style="display: flex; gap: 1.5rem; flex-wrap: wrap">
+    <h1>
+      <RouterLink to="/" style="text-decoration: none"><b>&lt;</b></RouterLink>
+    </h1>
     <h1 @click="showLocal = false" :class="{ inactive: showLocal }">Online</h1>
     <h1 @click="showLocal = true" :class="{ inactive: !showLocal }">Local</h1>
   </div>
@@ -24,5 +27,6 @@ const showLocal = ref(false);
 h1 {
   filter: opacity(100%);
   cursor: pointer;
+  font-size: 2.5rem;
 }
 </style>

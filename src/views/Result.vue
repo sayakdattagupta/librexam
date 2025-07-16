@@ -3,16 +3,27 @@
     <header
       style="
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         width: 100%;
         justify-content: space-between;
+        gap: 1em;
       "
     >
-      <h1>Result</h1>
-      <h1>{{ testTitle }}</h1>
+      <h1 style="font-size: 2.5rem">Result</h1>
+      <h1
+        style="
+          font-size: 2.5rem;
+          overflow-x: auto;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          max-width: 100%;
+        "
+      >
+        {{ testTitle }}
+      </h1>
     </header>
 
-    <h1>Score: {{ score }}</h1>
+    <h1 style="font-size: 2.5rem">Score: {{ score }}</h1>
     <h2>
       Time Taken: {{ Math.floor(timeTaken / 60) }} min {{ timeTaken % 60 }} sec
     </h2>
@@ -39,10 +50,19 @@
           <h3
             class="clickable"
             @click="subDropdown"
-            style="display: inline-block"
+            style="
+              display: inline-block;
+              overflow-x: auto;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              max-width: 30vw;
+              margin-right: 1rem;
+            "
             :class="{ active: subDropdownVis }"
           >
-            {{ subject.name }}
+            <b>
+              {{ subject.name }}
+            </b>
           </h3>
           <ul v-if="subDropdownVis" class="dropdown">
             <li
@@ -54,14 +74,21 @@
               {{ subj.name }}
             </li>
           </ul>
-          |
           <h3
             class="clickable"
             @click="secDropdown"
-            style="display: inline-block"
+            style="
+              display: inline-block;
+              overflow-x: auto;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              max-width: 30vw;
+            "
             :class="{ active: secDropdownVis }"
           >
-            {{ section.name }}
+            <b>
+              {{ section.name }}
+            </b>
           </h3>
           <ul v-if="secDropdownVis" class="dropdown">
             <li

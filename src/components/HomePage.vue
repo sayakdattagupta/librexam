@@ -18,12 +18,28 @@
       to="/loadTest"
       >Browse Tests</RouterLink
     >
-    <h3 @click="scrollToSection" class="hoverBut" style="margin-top: 2em">
+    <h3
+      @click="scrollToSection"
+      v-if="histAvailable"
+      class="hoverBut"
+      style="margin-top: 2em"
+    >
       Or, see already attempted tests.
     </h3>
+    <RouterLink
+      to="/about"
+      style="
+        margin-top: 1em;
+        display: block;
+        text-align: right;
+        text-decoration: none;
+        user-select: none;
+      "
+      >Learn More</RouterLink
+    >
     <section ref="targetSec" style="margin-top: 25em">
       <div class="saved-tests secBreak" v-if="resumableTests.length">
-        <h2>Paused Tests</h2>
+        <h2><b>Paused Tests</b></h2>
         <ul>
           <li
             style="padding-bottom: 1em"
@@ -47,7 +63,7 @@
         </ul>
       </div>
       <div class="saved-tests secBreak" v-if="submittedTests.length">
-        <h2>Submitted Tests</h2>
+        <h2><b>Submitted Tests</b></h2>
         <ul>
           <li
             style="padding-bottom: 1em"
@@ -90,6 +106,10 @@ function start() {
 
 const targetSec = ref(null);
 
+const histAvailable = computed(
+  () => resumableTests.value.length > 0 || submittedTests.value.length > 0,
+);
+
 function scrollToSection() {
   targetSec.value?.scrollIntoView({ behavior: "smooth" });
 }
@@ -121,6 +141,9 @@ function deleteTest(test) {
 }
 </script>
 <style>
+.hoverBut {
+  user-select: none;
+}
 .hoverBut:hover {
   cursor: pointer;
 }

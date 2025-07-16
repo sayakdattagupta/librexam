@@ -1,6 +1,6 @@
 <template>
   <div class="container" style="padding-top: 0">
-    <h2>How to create and share your own tests for LibrExam</h2>
+    <h2><b>How to create and share your own tests for LibrExam</b></h2>
 
     <ol>
       <li>

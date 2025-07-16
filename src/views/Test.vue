@@ -12,10 +12,19 @@
         <h3
           class="clickable"
           @click="subDropdown"
-          style="display: inline-block"
+          style="
+            display: inline-block;
+            overflow-x: auto;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 30vw;
+            margin-right: 1rem;
+          "
           :class="{ active: subDropdownVis }"
         >
-          {{ subject.name }}
+          <b>
+            {{ subject.name }}
+          </b>
         </h3>
         <ul v-if="subDropdownVis" class="dropdown">
           <li
@@ -27,14 +36,22 @@
             {{ subj.name }}
           </li>
         </ul>
-        |
+
         <h3
           class="clickable"
           @click="secDropdown"
-          style="display: inline-block"
+          style="
+            display: inline-block;
+            overflow-x: auto;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 30vw;
+          "
           :class="{ active: secDropdownVis }"
         >
-          {{ section.name }}
+          <b>
+            {{ section.name }}
+          </b>
         </h3>
         <ul v-if="secDropdownVis" class="dropdown">
           <li
@@ -50,7 +67,9 @@
       <div style="display: flex; align-items: center; gap: 0.5rem">
         <h3><ThemeToggle /></h3>
         |
-        <h3>{{ formatted }}</h3>
+        <h3>
+          <b>{{ formatted }}</b>
+        </h3>
       </div>
     </header>
 
