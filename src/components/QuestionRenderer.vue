@@ -92,14 +92,18 @@
     <p v-if="!question.solution && !question.simage">No Solution Provided.</p>
   </div>
   <div class="secBreak" />
+  <button @click="showPreview = true">Show Question Paper</button>
+  <QuestionPaper v-model:showPreview="showPreview" />
 </template>
 
 <script setup>
 import { computed, ref, watch } from "vue";
 import { useTestState } from "../stores/testState";
 import latexText from "./latexText.vue";
+import QuestionPaper from "./QuestionPaper.vue";
 
 const testState = useTestState();
+const showPreview = ref(false);
 
 const props = defineProps({
   subIdx: Number,
