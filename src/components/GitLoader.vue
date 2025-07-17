@@ -26,17 +26,25 @@ const allTags = computed(() => {
 
 async function fetchCentralRepoIndex() {
   const cacheKey = "cached-indexedRepos";
+
   try {
     const res = await fetch(`${CENTRAL_INDEX_URL}?t=${Date.now()}`);
     if (!res.ok) throw new Error("Failed to load central index");
 
-    const data = await res.json();
-    if (!data.repositories || data.repositories.length === 0) {
+    const latestData = await res.json();
+    if (!latestData.repositories || latestData.repositories.length === 0) {
       throw new Error("Received empty central index");
     }
 
-    loadedRepos.value = data.repositories;
-    localStorage.setItem(cacheKey, JSON.stringify(data));
+    const cachedRaw = localStorage.getItem(cacheKey);
+    const cached = cachedRaw ? JSON.parse(cachedRaw) : null;
+
+    if (JSON.stringify(latestData) !== JSON.stringify(cached)) {
+      localStorage.setItem(cacheKey, JSON.stringify(latestData));
+      console.log("Central index updated in localStorage.");
+    }
+
+    loadedRepos.value = latestData.repositories;
   } catch (err) {
     console.error("Error loading indexedRepos.json:", err);
 
@@ -45,7 +53,9 @@ async function fetchCentralRepoIndex() {
       try {
         const data = JSON.parse(cached);
         loadedRepos.value = data.repositories || [];
-        alert("Using cached central index due to error or empty result.");
+        console.warn(
+          "Using cached central index due to fetch error or empty result.",
+        );
       } catch (parseErr) {
         console.error("Error parsing cached central index:", parseErr);
         alert("Could not load central test repository list.");
@@ -71,10 +81,17 @@ async function fetchAllIndexes() {
       const fetchedTests = await res.json();
 
       if (Array.isArray(fetchedTests) && fetchedTests.length > 0) {
+        const cachedRaw = localStorage.getItem(cacheKey);
+        const cached = cachedRaw ? JSON.parse(cachedRaw) : null;
+
+        if (JSON.stringify(fetchedTests) !== JSON.stringify(cached)) {
+          localStorage.setItem(cacheKey, JSON.stringify(fetchedTests));
+          console.log(`✅ Updated cache for ${repo.full_name}`);
+        }
+
         tests = fetchedTests;
-        localStorage.setItem(cacheKey, JSON.stringify(fetchedTests)); // ✅ Save cache
       } else {
-        throw new Error("Fetched index is empty, using cache");
+        throw new Error("Fetched index is empty");
       }
     } catch (err) {
       console.warn(`Error loading index for ${repo.full_name}:`, err);
@@ -83,6 +100,7 @@ async function fetchAllIndexes() {
       if (cached) {
         try {
           tests = JSON.parse(cached);
+          console.warn(`⚠️ Using cached index for ${repo.full_name}`);
         } catch (parseErr) {
           console.error(
             `Error parsing cached index for ${repo.full_name}:`,
@@ -302,7 +320,7 @@ onMounted(() => {
     </ul>
   </div>
 </template>
-<style>
+<style scoped>
 .tName:hover {
   cursor: pointer;
 }

@@ -16,7 +16,7 @@
         width: 20%;
       "
       to="/loadTest"
-      >Browse Tests</RouterLink
+      >Begin</RouterLink
     >
     <h3
       @click="scrollToSection"

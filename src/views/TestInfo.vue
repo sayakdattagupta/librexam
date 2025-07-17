@@ -29,7 +29,7 @@
     <div>
       <button @click="startTest" style="margin-right: 1em">Start Test</button>
       <button @click="showPreview = true" style="margin-bottom: 2rem">
-        Show Question Paper
+        View or Download (PDF)
       </button>
       <QuestionPaper v-model:showPreview="showPreview" />
     </div>
@@ -69,7 +69,7 @@ function backOff() {
   router.push("/loadTest/");
 }
 </script>
-<style>
+<style scoped>
 .backLink:hover {
   cursor: pointer;
 }

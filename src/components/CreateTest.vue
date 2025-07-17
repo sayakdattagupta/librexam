@@ -23,7 +23,7 @@
             {
               "type": "SMCQ",
               "text": "What is the acceleration due to gravity on Earth?",
-              "image": "", //solution image
+              "image": "", //question image
               "options": ["9.8 m/s²", "10 m/s²", "9.6 m/s²", "8.9 m/s²"],
               "answer": 0
               "solution": "The acceleration due to gravity is 9.8",

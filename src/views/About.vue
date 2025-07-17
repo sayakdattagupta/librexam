@@ -30,7 +30,7 @@
     single zip file, enabling fully offline and decentralised test sharing.
   </p>
 
-  <h2>Features</h2>
+  <h2><b>Features</b></h2>
   <ul>
     <li>Browse tests from automatically indexed repositories</li>
     <li>Manage multiple tests (paused or submitted)</li>
@@ -42,7 +42,7 @@
     <li>Basic results page</li>
   </ul>
 
-  <h3>Planned Features</h3>
+  <h3><b>Planned Features</b></h3>
   <ul>
     <li>Improved results and statistics dashboard</li>
     <li>Track user performance across multiple tests</li>
@@ -57,3 +57,13 @@
 import { RouterView, useRouter } from "vue-router";
 const router = useRouter();
 </script>
+<style scoped>
+ul {
+  margin-left: 1em;
+}
+li {
+  margin-bottom: 0.5em;
+  list-style: disc;
+  display: list-item;
+}
+</style>
