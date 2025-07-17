@@ -43,6 +43,7 @@ To boost early-adoption of the software while minimizing investment of resources
 
 - Test browsing (indexed repos) - all repos tagged with 'librexam-test' are indexed automatically.
 - Ability to manage multiple tests (paused or submitted)
+- Ability to preview tests as a psuedo-"question paper" or download them as PDFs (via jsPdf and html-to-image)
 - Supports SMCQ, MMCQ and Numerical questions.
 - Supports marking questions for review.
 - Ability to load images for questions and/or their solutions.
