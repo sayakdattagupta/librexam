@@ -26,21 +26,30 @@
       </li>
     </ul>
     <br />
-    <button @click="startTest">Start Test</button>
+    <div>
+      <button @click="startTest" style="margin-right: 1em">Start Test</button>
+      <button @click="showPreview = true" style="margin-bottom: 2rem">
+        Show Question Paper
+      </button>
+      <QuestionPaper v-model:showPreview="showPreview" />
+    </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useTestManager } from "../stores/testManager";
 import { useTestState } from "../stores/testState";
+import QuestionPaper from "../components/QuestionPaper.vue";
 
 const route = useRoute();
 const router = useRouter();
 
 const testManager = useTestManager();
 const testState = useTestState();
+
+const showPreview = ref(false);
 
 const testId = computed(() => testState.testId);
 const testTitle = computed(() => testState.testTitle);

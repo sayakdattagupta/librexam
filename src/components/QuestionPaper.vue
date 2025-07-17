@@ -5,9 +5,18 @@
     @click.self="emit('update:showPreview', false)"
   >
     <div class="modal-content">
-      <button @click="emit('update:showPreview', false)" class="close-btn">
-        ✕
-      </button>
+      <div
+        style="display: flex; justify-content: space-between; margin-top: 1rem"
+      >
+        <button @click="downloadAsPdf" style="margin: 0">Download</button>
+        <button
+          @click="emit('update:showPreview', false)"
+          class="close-btn"
+          style="margin: 0"
+        >
+          X
+        </button>
+      </div>
 
       <div ref="pdfContainer" class="pdf-preview">
         <div>
@@ -99,14 +108,60 @@
 <script setup>
 import { useTestState } from "../stores/testState";
 import latexText from "./latexText.vue";
+import { ref, onMounted } from "vue";
 
 const props = defineProps({
   showPreview: Boolean,
 });
+
 const emit = defineEmits(["update:showPreview"]);
 
 const testState = useTestState();
 const test = testState.testData;
+
+import { toJpeg } from "html-to-image";
+import jsPDF from "jspdf";
+
+const pdfContainer = ref(null);
+
+import { nextTick } from "vue";
+
+async function downloadAsPdf() {
+  const node = pdfContainer.value;
+  if (!node) return;
+
+  node.classList.add("exporting");
+
+  await nextTick();
+
+  try {
+    const dataUrl = await toJpeg(node, {
+      cacheBust: true,
+      quality: 1.0,
+      pixelRatio: 1.5,
+      skipFonts: true,
+    });
+
+    const img = new Image();
+    img.src = dataUrl;
+
+    img.onload = () => {
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "px",
+        format: [img.width, img.height],
+      });
+
+      pdf.setFont("helvetica");
+      pdf.addImage(img, "JPEG", 0, 0, img.width, img.height);
+      pdf.save(`librexam-${test.title}.pdf`);
+    };
+  } catch (err) {
+    console.error("Download failed:", err);
+  } finally {
+    node.classList.remove("exporting");
+  }
+}
 </script>
 
 <style scoped>
@@ -134,9 +189,7 @@ const test = testState.testData;
 }
 
 .close-btn {
-  position: absolute;
-  top: 1em;
-  right: 1em;
+  color: black;
   background: none;
   border: none;
   font-size: 1.5em;
@@ -154,9 +207,13 @@ const test = testState.testData;
 
 .pdf-preview {
   width: 100%;
-  font-family: Georgia;
+  font-family: "Georgia", serif;
   color: black;
   background-color: white;
+}
+
+.exporting {
+  padding: 2em;
 }
 
 img {

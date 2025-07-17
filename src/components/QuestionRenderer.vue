@@ -92,7 +92,9 @@
     <p v-if="!question.solution && !question.simage">No Solution Provided.</p>
   </div>
   <div class="secBreak" />
-  <button @click="showPreview = true">Show Question Paper</button>
+  <button @click="showPreview = true" style="margin-bottom: 2rem">
+    Show Question Paper
+  </button>
   <QuestionPaper v-model:showPreview="showPreview" />
 </template>
 
