@@ -19,7 +19,7 @@
 
 is a powerful, fully static, and (optionally) decentralised test and quizzing engine - powered by Vue.js.
 
-![screens](./screenshots/screen1.jpg)
+![screens](./screenshots/screen2.jpg)
 
 **NOTE: LibrExam is alpha software and is considered unstable. While users testing and providing usage information is highly appreciated, please use at your own risk.**
 
@@ -31,13 +31,9 @@ All tests and quizzes are typed out in JSON, making distribution incredibly easy
 
 A collection of tests can be hosted in a repo and indexed - this repo, once tagged/given the topic of "librexam-test", gets automatically indexed into a central list of repos - effectively allowing decentralised hosting of tests. Aditionally, JSON files for individual tests can be loaded manually.
 
-![screens](./screenshots/screen2.jpg)
+![screens](./screenshots/screen1.jpg)
 
 Even though images for questions currently need to be hosted (using a service like ImgBB, for example), then linked separately - A feature where each test JSON is bundled into a zip together with its own assets folder might be implemented - thus practically making the entire thing decentralised.
-
-### Why Vercel?
-
-To boost early-adoption of the software while minimizing investment of resources from my behalf.
 
 ## Features
 
@@ -50,6 +46,8 @@ To boost early-adoption of the software while minimizing investment of resources
 - KaTeX/Math support.
 - A dark theme/light theme toggle.
 - A rudimentary results page.
+
+![screens](./screenshots/screen3.jpg)
 
 ### To be done
 
